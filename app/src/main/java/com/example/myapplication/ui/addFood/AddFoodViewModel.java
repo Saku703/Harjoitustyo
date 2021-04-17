@@ -1,16 +1,16 @@
-package com.example.myapplication.ui.slideshow;
+package com.example.myapplication.ui.addFood;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class AddFoodViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public AddFoodViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("Täällä voit lisätä ruuan ja laskea päästöt");
     }
 
     public LiveData<String> getText() {
