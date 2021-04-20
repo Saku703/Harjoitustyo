@@ -21,6 +21,7 @@ public class OpeningFragment extends Fragment {
     private HomeViewModel openingViewModel;
 
     //log in
+    private TextView welcome;
     private EditText email;
     private EditText password;
     private Button logIn;
@@ -37,8 +38,9 @@ public class OpeningFragment extends Fragment {
         /*openingViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class); */
         View root = inflater.inflate(R.layout.fragment_opening, container, false);
-        final TextView textView = root.findViewById(R.id.text_opening);
+        //final TextView textView = root.findViewById(R.id.text_opening);
 
+        welcome = (TextView) root.findViewById(R.id.text_opening);
         email = (EditText) root.findViewById(R.id.emailLogin_opening);
         password = (EditText) root.findViewById(R.id.passwordLogin_opening);
         logIn = (Button) root.findViewById(R.id.button1_opening);
@@ -83,12 +85,14 @@ public class OpeningFragment extends Fragment {
         } */
 
         if ((email.equals(newEmail) == true) && (password.equals(newPassword) == true)) {
-            loginInfo.setText("Olet kirjautunut sisään.");
+            //loginInfo.setText("Olet kirjautunut sisään.");
+            welcome.setText("Olet kirjautunut sisään!");
             //Intent intent = new Intent (getActivity(), HomeFragment.class);
             //startActivity(intent);
         } else {
             //System.out.println("ei toimi");
-            loginInfo.setText("Sähköposti tai salasana on väärä.");
+            //loginInfo.setText("Sähköposti tai salasana on väärä.");
+            welcome.setText("Sähköposti tai salasana on väärä.");
 
         }
     }
@@ -99,11 +103,13 @@ public class OpeningFragment extends Fragment {
 
         int passLenght = newPassword.length();
         if (passLenght < 12) {
-            createAccountInfo.setText("Salasana on liian lyhyt" + passLenght);
+            //createAccountInfo.setText("Salasana on liian lyhyt" + passLenght);
+            welcome.setText("Salasana on liian lyhyt, merkkjä " + passLenght + "/12");
             newEmail = "";
             newPassword = "";
         } else {
-            createAccountInfo.setText("Tili luotu.");
+            //createAccountInfo.setText("Tili luotu.");
+            welcome.setText("Tili luotu. Kirjaudu sisään");
         }
 
         //UserDatabase.fragmentCalls(email, password);
