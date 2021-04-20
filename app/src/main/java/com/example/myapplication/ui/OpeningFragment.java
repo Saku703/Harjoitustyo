@@ -20,12 +20,17 @@ public class OpeningFragment extends Fragment {
 
     private HomeViewModel openingViewModel;
 
+    //log in
     private EditText email;
     private EditText password;
     private Button logIn;
     private TextView loginInfo;
 
+    //create account
+    private EditText newEmail;
+    private EditText newPassword;
     private Button createAccount;
+    private TextView createAccountInfo;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,15 +42,17 @@ public class OpeningFragment extends Fragment {
         email = (EditText) root.findViewById(R.id.emailLogin_opening);
         password = (EditText) root.findViewById(R.id.passwordLogin_opening);
         logIn = (Button) root.findViewById(R.id.button1_opening);
-        loginInfo = (TextView) root.findViewById(R.id.loginInfo_opening);
+        loginInfo = (TextView) root.findViewById(R.id.infoLogin_opening);
 
+        newEmail = (EditText) root.findViewById(R.id.emailCreateAccount_opening);
+        newPassword = (EditText) root.findViewById(R.id.passwordCreateAccount_opening);
         createAccount = (Button) root.findViewById(R.id.button2_opening);
+        createAccountInfo = (TextView) root.findViewById(R.id.infoCreateAccount_opening);
 
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  //System.out.println("joo");
-                  validateLogin(email.getText().toString(), password.getText().toString());
+                  validateLogin(email.getText().toString(), newEmail.getText().toString(), password.getText().toString(), newPassword.getText().toString());
             }
         });
 
@@ -53,6 +60,7 @@ public class OpeningFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 System.out.println("hei");
+                createAccount(newEmail.getText().toString(), newPassword.getText().toString());
             }
         });
 
@@ -66,18 +74,39 @@ public class OpeningFragment extends Fragment {
         return root;
     }
 
-    private void validateLogin (String email, String password) {
-        int length1 = email.length();
-        int length2 = password.length();
-        System.out.println(email + length1 + " " + password + length2);
-        //System.out.println(password + length2);
-        if ((email == "moi") && (password == "1234")) {
-            Intent intent = new Intent (getActivity(), HomeFragment.class);
-            startActivity(intent);
+    private void validateLogin (String email, String newEmail, String password, String newPassword) {
+        System.out.println(email + " " + password);
+        System.out.println(newEmail + " " + newPassword);
+        /*
+        if (newEmail == "") {
+            loginInfo.setText("Tiliä ei vielä ole. Luo tili.");
+        } */
+
+        if ((email.equals(newEmail) == true) && (password.equals(newPassword) == true)) {
+            loginInfo.setText("Olet kirjautunut sisään.");
+            //Intent intent = new Intent (getActivity(), HomeFragment.class);
+            //startActivity(intent);
         } else {
             //System.out.println("ei toimi");
             loginInfo.setText("Sähköposti tai salasana on väärä.");
+
         }
+    }
+
+    private void createAccount (String newEmail, String newPassword) {
+        //User testi = User.getInstance();
+        System.out.println("opening");
+
+        int passLenght = newPassword.length();
+        if (passLenght < 12) {
+            createAccountInfo.setText("Salasana on liian lyhyt" + passLenght);
+            newEmail = "";
+            newPassword = "";
+        } else {
+            createAccountInfo.setText("Tili luotu.");
+        }
+
+        //UserDatabase.fragmentCalls(email, password);
     }
 
 }
