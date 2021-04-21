@@ -43,14 +43,22 @@ public class UserDatabase extends Activity{
         int passMinLenght = 12; //minimum lenght given in the final project instructions
         int passLenght = newPassword.length();
 
+        /*testing all of the requirements for a good password are met. they are:
+        Minimum of 12 characters.
+        Must contain at least 1 number, 1 capital letter, 1 lower case letter and 1 special character. */
         if (passLenght < passMinLenght) {
             returnStatement = String.format("Salasana on liian lyhyt, merkkjä %d/12", passLenght);
-            //noora
-            newEmail = "";
-            newPassword = "";
+        } else if (PasswordTester.containsNumber(newPassword) == false) {
+            returnStatement = "Salasana ei sisältänyt numeroa";
+        } else if (PasswordTester.containsCapitalLetter(newPassword, passLenght) == false) {
+            returnStatement = "Salasana ei sisältänyt isoa kirjainta";
+        } else if (PasswordTester.containsSmallLetter(newPassword, passLenght) == false) {
+            returnStatement = "Salasana ei sisältänyt pientä kirjainta";
+        } else if (PasswordTester.containsSpecialCharacter(newPassword, passLenght) == false) {
+            returnStatement = "Salasana ei sisältänyt erikoismerkkiä";
         } else {
-            User temp1 = new User(newEmail, newPassword);
-            array[usersCount] = (temp1);
+            User temp = new User(newEmail, newPassword);
+            array[usersCount] = (temp);
 
             //System.out.println(array[usersCount]);
             System.out.println(array[usersCount].getEmail());
