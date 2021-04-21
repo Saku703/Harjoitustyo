@@ -51,18 +51,26 @@ public class OpeningFragment extends Fragment {
         createAccount = (Button) root.findViewById(R.id.button2_opening);
         createAccountInfo = (TextView) root.findViewById(R.id.infoCreateAccount_opening);
 
+        //log in button -> user database call -> search wether email & password are in the database
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  validateLogin(email.getText().toString(), newEmail.getText().toString(), password.getText().toString(), newPassword.getText().toString());
+                String printToUser = "";
+                printToUser = UserDatabase.logIn(email.getText().toString(), password.getText().toString());
+                welcome.setText(printToUser);
+                  //validateLogin(email.getText().toString(), newEmail.getText().toString(), password.getText().toString(), newPassword.getText().toString());
             }
         });
 
+        //create account button -> user database call -> create new user
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("hei");
-                createAccount(newEmail.getText().toString(), newPassword.getText().toString());
+                String printToUser = "";
+                //createAccount(newEmail.getText().toString(), newPassword.getText().toString());
+                printToUser = UserDatabase.createUser(newEmail.getText().toString(), newPassword.getText().toString());
+                welcome.setText(printToUser);
+
             }
         });
 
@@ -77,27 +85,24 @@ public class OpeningFragment extends Fragment {
     }
 
     private void validateLogin (String email, String newEmail, String password, String newPassword) {
-        System.out.println(email + " " + password);
-        System.out.println(newEmail + " " + newPassword);
+        //System.out.println(email + " " + password);
+        //System.out.println(newEmail + " " + newPassword);
+
+        //UserDatabase.createUser(email, password);
 
         /*
         if (newEmail == "") {
             loginInfo.setText("Tiliä ei vielä ole. Luo tili.");
         } */
 
-        if ((email.equals(newEmail) == true) && (password.equals(newPassword) == true)) {
-            //loginInfo.setText("Olet kirjautunut sisään.");
-            welcome.setText("Olet kirjautunut sisään!");
-        } else {
-            //loginInfo.setText("Sähköposti tai salasana on väärä.");
-            welcome.setText("Sähköposti tai salasana on väärä.");
 
-        }
     }
 
     private void createAccount (String newEmail, String newPassword) {
         //User testi = User.getInstance();
-        System.out.println("opening");
+        //System.out.println("opening");
+
+
 
         int passLenght = newPassword.length();
         if (passLenght < 12) {
@@ -107,6 +112,7 @@ public class OpeningFragment extends Fragment {
             newPassword = "";
         } else {
             //createAccountInfo.setText("Tili luotu.");
+            UserDatabase.createUser(newEmail, newPassword);
             welcome.setText("Tili luotu. Kirjaudu sisään");
         }
 

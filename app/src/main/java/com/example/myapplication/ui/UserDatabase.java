@@ -6,37 +6,106 @@ import java.util.ArrayList;
 
 public class UserDatabase extends Activity{
 
-    private static String newEmail;
-    private static String newPassword;
-    //String newEmail;
-    //String newPassword;
+    private String email;
+    private String password;
+    private String newEmail;
+    private String newPassword;
 
     //public User user = new User();
-    public ArrayList<UserDatabase> array = new ArrayList<UserDatabase>();
+    //public ArrayList<UserDatabase> array = new ArrayList<UserDatabase>();
+
+    //initialising the static user array list
+    public static User[] array;
+    static {
+        array = new User[2];
+    }
 
     public UserDatabase(String email, String password) {
     }
 
     public void fragmentCalls(String email, String password) {
+        int usersCount = 0;
         newEmail = email;
         newPassword = password;
 
-        UserDatabase temp1 = new UserDatabase(newEmail, newPassword);
-        array.add(temp1);
+        User temp1 = new User(newEmail, newPassword);
+        array[usersCount] = (temp1);
+
+        usersCount++;
+        System.out.println(usersCount);
     }
 
-    //private static UserDatabase base = new UserDatabase(email, password);
+    //private UserDatabase base = new UserDatabase(email, password);
 
-    public void createUser() {
-        //System.out.println("yks");
-        //System.out.println(newEmail);
-        //System.out.println(newPassword);
+    public static String createUser(String newEmail, String newPassword) {
+        String returnStatement = "";
+        int usersCount = 0;
+        int passMinLenght = 12; //minimum lenght given in the final project instructions
+        int passLenght = newPassword.length();
+
+        if (passLenght < passMinLenght) {
+            returnStatement = String.format("Salasana on liian lyhyt, merkkjä %d/12", passLenght);
+            newEmail = "";
+            newPassword = "";
+        } else {
+            User temp1 = new User(newEmail, newPassword);
+            array[usersCount] = (temp1);
+
+            //System.out.println(array[usersCount]);
+            System.out.println(array[usersCount].getEmail());
+            System.out.println(array[usersCount].getPassword());
+
+            //usersCount++;
+            //System.out.println(usersCount);
+
+            returnStatement = "Tili luotu. Kirjaudu sisään.";
+        }
+
+        return returnStatement;
+    }
+
+    public static String logIn(String email, String password) {
+        String returnStatement = "";
+        int i = 0;
+
+        //System.out.println("vanhat " + array[0].getEmail() + ", " + array[0].getPassword());
+        //System.out.println("uudet " + email + ", " + password);
+
+        if ((email.equals(array[i].getEmail()) == true) && (password.equals(array[i].getPassword()) == true)) {
+            //loginInfo.setText("Olet kirjautunut sisään.");
+            //System.out.println("tosi");
+            returnStatement = "Olet kirjautunut sisään!";
+        } else {
+            //System.out.println("epätosi");
+            returnStatement = "Sähköposti tai salasana on väärä.";
+        }
+
+        /*
+        for (i = 0; i < array.length; i++) {
+            if ((email.equals(array[i].getEmail()) == true) && (password.equals(array[i].getPassword()) == true)) {
+                //loginInfo.setText("Olet kirjautunut sisään.");
+                returnStatement = "Olet kirjautunut sisään!";
+            } else if ((i == (array.length - 1)) && (email.equals(array[i].getEmail()) == false) && (password.equals(array[i].getPassword()) == false)) {
+                //loginInfo.setText("Sähköposti tai salasana on väärä.");
+                returnStatement = "Sähköposti tai salasana on väärä.";
+                //((email.equals(array[i].getEmail()) == false) && (password.equals(array[i].getPassword()) == false))
+            }
+        } */
+
+
+        return returnStatement;
+    }
+
+}
+
+//System.out.println("yks");
+//System.out.println(newEmail);
+//System.out.println(newPassword);
+        /*
         UserDatabase temp1 = new UserDatabase("niilo@gmail.com", "1234");
         array.add(temp1);
 
         System.out.println("1");
         System.out.println(array.get(0));
-        System.out.println("2");
-    }
+        System.out.println("2"); */
 
-}
