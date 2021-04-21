@@ -79,6 +79,7 @@ public class OpeningFragment extends Fragment {
     private void validateLogin (String email, String newEmail, String password, String newPassword) {
         System.out.println(email + " " + password);
         System.out.println(newEmail + " " + newPassword);
+
         /*
         if (newEmail == "") {
             loginInfo.setText("Tiliä ei vielä ole. Luo tili.");
@@ -87,10 +88,7 @@ public class OpeningFragment extends Fragment {
         if ((email.equals(newEmail) == true) && (password.equals(newPassword) == true)) {
             //loginInfo.setText("Olet kirjautunut sisään.");
             welcome.setText("Olet kirjautunut sisään!");
-            //Intent intent = new Intent (getActivity(), HomeFragment.class);
-            //startActivity(intent);
         } else {
-            //System.out.println("ei toimi");
             //loginInfo.setText("Sähköposti tai salasana on väärä.");
             welcome.setText("Sähköposti tai salasana on väärä.");
 
