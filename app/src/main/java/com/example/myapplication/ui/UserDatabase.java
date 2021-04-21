@@ -45,6 +45,7 @@ public class UserDatabase extends Activity{
 
         if (passLenght < passMinLenght) {
             returnStatement = String.format("Salasana on liian lyhyt, merkkjä %d/12", passLenght);
+            //noora
             newEmail = "";
             newPassword = "";
         } else {
