@@ -6,7 +6,6 @@ public class PasswordTester {
 
     public static boolean containsNumber (String password) {
         boolean result = false;
-        //String regex = "(.)(\\d)(.)*";
         String regex = ".*\\d.*";
         Pattern pattern = Pattern.compile(regex);
         result = pattern.matcher(password).matches();
@@ -39,9 +38,8 @@ public class PasswordTester {
         return result;
     }
 
-    public static boolean containsSpecialCharacter (String password, int passLenght) {
+    public static boolean containsSpecialCharacter (String password) {
         boolean result = false;
-        //String regex = ".*[!@#$%^&(){}:;'<>,?/~`_+-=|\\].*";
         String regex = ".*[!@#$%^&(){}:;'<>,?/~`_+-=|\\\\].*";
         Pattern pattern = Pattern.compile(regex);
         result = pattern.matcher(password).matches();

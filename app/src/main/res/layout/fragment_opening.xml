@@ -21,14 +21,14 @@
         android:id="@+id/button1_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="452dp"
+        android:layout_marginTop="15dp"
         android:text="Kirjaudu sisään"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLogin_opening"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/button2_opening"
@@ -41,12 +41,12 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/emailLogin_opening"
+        android:id="@+id/userLogin_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:ems="10"
-        android:hint="sähköposti"
+        android:hint="käyttäjätunnus"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -62,7 +62,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailLogin_opening" />
+        app:layout_constraintTop_toBottomOf="@+id/userLogin_opening" />
 
     <TextView
         android:id="@+id/infoLogin_opening"
@@ -77,38 +77,38 @@
         android:id="@+id/passwordCreateAccount_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
+        android:layout_marginBottom="340dp"
         android:ems="10"
         android:hint="salasana"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button2_opening"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/emailCreateAccount_opening"
+        android:id="@+id/userCreateAccount_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="sähköposti"
+        android:hint="käyttäjätunnus"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/passwordCreateAccount_opening"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="_______________________________"
+        android:text="_____________________________________________________"
         app:layout_constraintBottom_toTopOf="@+id/passwordCreateAccount_opening"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoLogin_opening"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/passwordHint"
@@ -130,5 +130,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2_opening"
         app:layout_constraintVertical_bias="0.292" />
+
+    <EditText
+        android:id="@+id/name_opening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:hint="nimi (etunimi sukunimi)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordHint" />
+
+    <EditText
+        android:id="@+id/age_opening"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="200dp"
+        android:ems="10"
+        android:hint="ikä"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/height_opening"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/weight_opening"
+        android:layout_width="87dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="200dp"
+        android:ems="10"
+        android:hint="paino (kg)"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toEndOf="@+id/height_opening" />
+
+    <EditText
+        android:id="@+id/height_opening"
+        android:layout_width="104dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:hint="pituus (cm)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_opening" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

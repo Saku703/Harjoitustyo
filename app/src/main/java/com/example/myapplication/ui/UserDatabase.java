@@ -6,38 +6,18 @@ import java.util.ArrayList;
 
 public class UserDatabase extends Activity{
 
-    private String email;
+    private String user;
     private String password;
-    private String newEmail;
+    private String newUser;
     private String newPassword;
-
-    //public User user = new User();
-    //public ArrayList<UserDatabase> array = new ArrayList<UserDatabase>();
 
     //initialising the static user array list
     public static User[] array;
     static {
-        array = new User[2];
+        array = new User[6];
     }
 
-    public UserDatabase(String email, String password) {
-    }
-
-    public void fragmentCalls(String email, String password) {
-        int usersCount = 0;
-        newEmail = email;
-        newPassword = password;
-
-        User temp1 = new User(newEmail, newPassword);
-        array[usersCount] = (temp1);
-
-        usersCount++;
-        System.out.println(usersCount);
-    }
-
-    //private UserDatabase base = new UserDatabase(email, password);
-
-    public static String createUser(String newEmail, String newPassword) {
+    public static String createUser(String newUser, String newPassword, String name, int age, int height, int weight) {
         String returnStatement = "";
         int usersCount = 0;
         int passMinLenght = 12; //minimum lenght given in the final project instructions
@@ -54,38 +34,28 @@ public class UserDatabase extends Activity{
             returnStatement = "Salasana ei sisältänyt isoa kirjainta";
         } else if (PasswordTester.containsSmallLetter(newPassword, passLenght) == false) {
             returnStatement = "Salasana ei sisältänyt pientä kirjainta";
-        } else if (PasswordTester.containsSpecialCharacter(newPassword, passLenght) == false) {
+        } else if (PasswordTester.containsSpecialCharacter(newPassword) == false) {
             returnStatement = "Salasana ei sisältänyt erikoismerkkiä";
         } else {
-            User temp = new User(newEmail, newPassword);
+            User temp = new User(newUser, newPassword, name, age, height, weight);
             array[usersCount] = (temp);
-
-            //System.out.println(array[usersCount]);
-            System.out.println(array[usersCount].getEmail());
+            System.out.println(array[usersCount].getUser());
             System.out.println(array[usersCount].getPassword());
-
-            //usersCount++;
-            //System.out.println(usersCount);
-
+            System.out.println(array[usersCount].getAge());
             returnStatement = "Tili luotu. Kirjaudu sisään.";
         }
-
         return returnStatement;
     }
 
-    public static String logIn(String email, String password) {
+    public static String logIn(String user, String password) {
         String returnStatement = "";
         int i = 0;
 
-        //System.out.println("vanhat " + array[0].getEmail() + ", " + array[0].getPassword());
-        //System.out.println("uudet " + email + ", " + password);
-
-        if ((email.equals(array[i].getEmail()) == true) && (password.equals(array[i].getPassword()) == true)) {
-            //loginInfo.setText("Olet kirjautunut sisään.");
-            //System.out.println("tosi");
+        if (isArrayEmpty() == true) {
+            returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
+        } else if ((user.equals(array[i].getUser()) == true) && (password.equals(array[i].getPassword()) == true)) {
             returnStatement = "Olet kirjautunut sisään!";
         } else {
-            //System.out.println("epätosi");
             returnStatement = "Sähköposti tai salasana on väärä.";
         }
 
@@ -101,20 +71,21 @@ public class UserDatabase extends Activity{
             }
         } */
 
-
         return returnStatement;
     }
 
+    private static boolean isArrayEmpty () {
+        boolean empty = true;
+
+        for (int i=0; i < array.length; i++) {
+            if (array[i] != null) {
+                empty = false;
+                break;
+            }
+        }
+        return empty;
+    }
 }
 
-//System.out.println("yks");
-//System.out.println(newEmail);
-//System.out.println(newPassword);
-        /*
-        UserDatabase temp1 = new UserDatabase("niilo@gmail.com", "1234");
-        array.add(temp1);
 
-        System.out.println("1");
-        System.out.println(array.get(0));
-        System.out.println("2"); */
 
