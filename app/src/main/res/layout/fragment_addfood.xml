@@ -6,29 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".ui.addFood.AddFoodFragment">
 
-    <TextView
-        android:id="@+id/text_addFood"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+    <Button
+        android:id="@+id/button_API"
+        android:layout_width="98dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="151dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="527dp"
+        android:onClick="readXML"
+        android:text="Hae"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/userInput"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_Foods"
+        android:layout_width="199dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="151dp"
+        android:layout_marginBottom="528dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/userInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_API"
+    <EditText
+        android:id="@+id/userInput"
+        android:layout_width="106dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="151dp"
+        android:layout_marginBottom="528dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_API"
+        app:layout_constraintStart_toEndOf="@+id/spinner_Foods"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textView_Food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="readXML"
-        app:layout_constraintBottom_toTopOf="@+id/text_addFood"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="111dp"
+        android:layout_marginEnd="271dp"
+        android:layout_marginBottom="21dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_Foods"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="HAE" />
+        tools:text="TextView" />
+
+    <TextView
+        android:id="@+id/textView_CO2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="169dp"
+        android:layout_marginTop="151dp"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="347dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_Foods" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
