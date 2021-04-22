@@ -10,4 +10,5 @@
     <string name="menu_home">Home</string>
     <string name="menu_addFood">addFood</string>
     <string name="menu_log">Log</string>
+    <string name="n_yt_lokitiedot">Näytä lokitiedot</string>
 </resources>
