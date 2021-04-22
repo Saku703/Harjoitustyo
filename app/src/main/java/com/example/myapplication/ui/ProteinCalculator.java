@@ -10,7 +10,7 @@ public class ProteinCalculator {
         array = new Protein[10];
     }
 
-    private static void populateArray () {
+    public static void populateArray () {
         /*Source for protein amounts is Fineli, which is Finland's national database for foods and their
         nutritional information. The database is provided by THL (Finnish Institute sor Health and Welfare).
         The amount of protein is per 1g to make it convenient for further calculations. */
@@ -32,7 +32,7 @@ public class ProteinCalculator {
     public static String countConsumedProtein (int consumedAmount, int index) {
         double protein = 0.0;
         System.out.println("indeksi" + index);
-        populateArray();
+        //populateArray();
 
         protein = array[index].getProtein() * consumedAmount;
         System.out.println(protein);

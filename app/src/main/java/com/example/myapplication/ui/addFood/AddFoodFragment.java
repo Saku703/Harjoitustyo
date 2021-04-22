@@ -72,8 +72,9 @@ public class AddFoodFragment extends Fragment {
         textview_CO2 = (TextView) root.findViewById(R.id.textView_CO2);
         textview_Header = (TextView) root.findViewById(R.id.textView_Header);
         textview_Header.setText("Tarkista ympäristöystävällisin (proteiinin) lähde!");
-
         textView_protein = (TextView) root.findViewById(R.id.textView_protein);
+
+        ProteinCalculator.populateArray();
 
         button_API = (Button) root.findViewById(R.id.button_API);
         button_API.setOnClickListener(new View.OnClickListener() {
@@ -92,13 +93,16 @@ public class AddFoodFragment extends Fragment {
     public void readXML(View v) {
         int arrayIndex = 0;
         String consumedProtein = "";
+
         int intFromUser = Integer.parseInt(userInput.getText().toString());
         String selected_Food = spinner_Foods.getSelectedItem().toString();
         Emission emission = new Emission();
         Protein protein = new Protein();
         co2_value = emission.readXML(intFromUser, selected_Food);
+        consumedProtein = emission.getConsumedProtein(intFromUser, selected_Food);
         //String co2_output = co2_value.toString;
         textview_CO2.setText("intFromUser");
+        textView_protein.setText(consumedProtein);
         System.out.println(co2_value);
         System.out.println(protein.getProtein_beef());
         System.out.println(protein.getProtein_fish());

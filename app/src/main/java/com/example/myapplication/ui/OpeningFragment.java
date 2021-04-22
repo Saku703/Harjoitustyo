@@ -66,6 +66,8 @@ public class OpeningFragment extends Fragment {
         chooseSex.setAdapter(adapter);
         //chooseSex.setOnItemSelectedListener();
 
+
+
         //log in button -> user database call -> search wether user & password are in the database
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
