@@ -44,6 +44,7 @@ public class UserDatabase extends Activity{
             System.out.println(array[usersCount].getAge());
             System.out.println(array[usersCount].getSex());
             returnStatement = "Tili luotu. Kirjaudu sisään.";
+            //log call
         }
         return returnStatement;
     }
