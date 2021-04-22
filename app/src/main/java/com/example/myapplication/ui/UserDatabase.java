@@ -85,6 +85,15 @@ public class UserDatabase extends Activity{
         }
         return empty;
     }
+
+    public static String dailyProteinGoal () {
+        String str = "";
+
+        //The daily protein intake is calculated using user's age, weight and height
+        //basal metabolism rate
+
+        return str;
+    }
 }
 
 

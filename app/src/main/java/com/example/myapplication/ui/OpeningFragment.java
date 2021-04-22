@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ public class OpeningFragment extends Fragment {
     private EditText age;
     private EditText height;
     private EditText weight;
+    private Spinner chooseSex;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class OpeningFragment extends Fragment {
         age = (EditText) root.findViewById(R.id.age_opening);
         height = (EditText) root.findViewById(R.id.height_opening);
         weight = (EditText) root.findViewById(R.id.weight_opening);
+        chooseSex = (Spinner) root.findViewById(R.id.spinner_opening);
 
         //log in button -> user database call -> search wether user & password are in the database
         logIn.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +83,7 @@ public class OpeningFragment extends Fragment {
                 printToUser = UserDatabase.createUser(newUser.getText().toString(),
                         newPassword.getText().toString(), name.getText().toString(),
                         ageInt, heightInt, weightInt);
-                welcome.setText(printToUser);
+                createAccountInfo.setText(printToUser);
 
             }
         });

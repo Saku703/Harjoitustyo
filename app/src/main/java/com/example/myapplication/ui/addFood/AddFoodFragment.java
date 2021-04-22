@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.ProteinCalculator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,6 +37,7 @@ public class AddFoodFragment extends Fragment {
     private EditText userInput;
     private TextView textView_Food;
     private TextView textview_CO2;
+    private TextView textView_protein;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class AddFoodFragment extends Fragment {
         userInput = (EditText) root.findViewById(R.id.userInput);
         userInput.setText("0");
         textview_CO2 = (TextView) root.findViewById(R.id.textView_CO2);
+        textView_protein = (TextView) root.findViewById(R.id.textView_protein);
         button_API = (Button) root.findViewById(R.id.button_API);
         button_API.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,22 +81,32 @@ public class AddFoodFragment extends Fragment {
     }
 
     public void readXML(View v) {
+        int arrayIndex = 0;
+        String consumedProtein = "";
         int intFromUser = Integer.parseInt(userInput.getText().toString());
         String selected_Food = spinner_Foods.getSelectedItem().toString();
         System.out.println(intFromUser);
         if(0 <= intFromUser && intFromUser <= 200) {
             if(selected_Food == "Nauta") {
                 selected_Food = "beef";
+                //noora lisää näihin kohtii indeksin että saa haettua proteiinin
+                arrayIndex = 0;
+                consumedProtein = ProteinCalculator.countConsumedProtein(intFromUser, arrayIndex);
             } else if(selected_Food == "Kala") {
                 selected_Food = "fish";
+                arrayIndex = 1;
             } else if(selected_Food == "Porsas") {
                 selected_Food = "porkPoultryLevel";
+                arrayIndex = 2;
             }else if(selected_Food == "Kana") {
                 selected_Food = "porkPoultryLevel";
+                arrayIndex = 3;
             }else if(selected_Food == "Juusto") {
                 selected_Food = "cheese";
+                arrayIndex = 4;
             }else if(selected_Food == "Riisi") {
                 selected_Food = "rice";
+                arrayIndex = 5;
             }
 
             try {
@@ -124,6 +137,7 @@ public class AddFoodFragment extends Fragment {
                 Float co2_value = Float.parseFloat(total);
                 System.out.println(co2_value);
                 textview_CO2.setText(co2_value.toString());
+                textView_protein.setText(consumedProtein);
 
             } catch (IOException e) {
                 e.printStackTrace();

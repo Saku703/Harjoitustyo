@@ -6,14 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <Button
+        android:id="@+id/button2_opening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:text="Luo tili"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/name_opening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="nimi (etunimi sukunimi)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordHint" />
+
     <TextView
         android:id="@+id/text_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="36dp"
         android:text="Tervetuloa käyttämään sovellusta!"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,31 +48,21 @@
         android:text="Kirjaudu sisään"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLogin_opening"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button2_opening"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="Luo tili"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.011" />
 
     <EditText
         android:id="@+id/userLogin_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="käyttäjätunnus"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_opening" />
 
@@ -57,10 +70,12 @@
         android:id="@+id/passwordLogin_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="salasana"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userLogin_opening" />
 
@@ -68,36 +83,77 @@
         android:id="@+id/infoLogin_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:textColor="#F44336"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button1_opening" />
-
-    <EditText
-        android:id="@+id/passwordCreateAccount_opening"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="340dp"
-        android:ems="10"
-        android:hint="salasana"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/userCreateAccount_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="käyttäjätunnus"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <EditText
+        android:id="@+id/height_opening"
+        android:layout_width="104dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="pituus (cm)"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_opening" />
+
+    <EditText
+        android:id="@+id/age_opening"
+        android:layout_width="88dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="156dp"
+        android:ems="10"
+        android:hint="ikä"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/height_opening"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/weight_opening"
+        android:layout_width="87dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="156dp"
+        android:ems="10"
+        android:hint="paino (kg)"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toEndOf="@+id/height_opening" />
+
+    <EditText
+        android:id="@+id/passwordCreateAccount_opening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="332dp"
+        android:ems="10"
+        android:hint="salasana"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
@@ -108,79 +164,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/infoLogin_opening"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/passwordHint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tulee olla 12 merkkiä pitkä, sekä sisältää\nnumeron, erikoismerkin, ison ja pienen kirjaimen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordCreateAccount_opening" />
+        app:layout_constraintVertical_bias="0.07" />
 
     <TextView
         android:id="@+id/infoCreateAccount_opening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#F44336"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Luo tili täällä"
+        app:layout_constraintBottom_toTopOf="@+id/userCreateAccount_opening"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2_opening"
-        app:layout_constraintVertical_bias="0.292" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.904" />
 
-    <EditText
-        android:id="@+id/name_opening"
+    <TextView
+        android:id="@+id/passwordHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:hint="nimi (etunimi sukunimi)"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordHint" />
-
-    <EditText
-        android:id="@+id/age_opening"
-        android:layout_width="88dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="200dp"
-        android:ems="10"
-        android:hint="ikä"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/height_opening"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/weight_opening"
-        android:layout_width="87dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="200dp"
-        android:ems="10"
-        android:hint="paino (kg)"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toEndOf="@+id/height_opening" />
-
-    <EditText
-        android:id="@+id/height_opening"
-        android:layout_width="104dp"
-        android:layout_height="43dp"
         android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="pituus (cm)"
-        android:inputType="textPersonName"
+        android:text="Tulee olla 12 merkkiä pitkä, sekä sisältää\nnumeron, erikoismerkin, ison ja pienen kirjaimen"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_opening" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordCreateAccount_opening" />
+
+    <Spinner
+        android:id="@+id/spinner_opening"
+        android:layout_width="152dp"
+        android:layout_height="38dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2_opening"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/height_opening" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
