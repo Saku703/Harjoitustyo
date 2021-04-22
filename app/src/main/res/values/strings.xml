@@ -12,7 +12,7 @@
     <string name="menu_log">Log</string>
 
     <string-array name="chooseSex">
-        <item>Male</item>
-        <item>Female</item>
+        <item>mies</item>
+        <item>nainen</item>
     </string-array>
 </resources>

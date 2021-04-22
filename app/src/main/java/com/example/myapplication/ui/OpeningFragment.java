@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -60,6 +61,11 @@ public class OpeningFragment extends Fragment {
         weight = (EditText) root.findViewById(R.id.weight_opening);
         chooseSex = (Spinner) root.findViewById(R.id.spinner_opening);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.chooseSex, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        chooseSex.setAdapter(adapter);
+        //chooseSex.setOnItemSelectedListener();
+
         //log in button -> user database call -> search wether user & password are in the database
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,10 +85,11 @@ public class OpeningFragment extends Fragment {
                 int ageInt = Integer.parseInt(age.getText().toString());
                 int heightInt = Integer.parseInt(height.getText().toString());
                 int weightInt = Integer.parseInt(weight.getText().toString());
+                String selectedSex = chooseSex.getSelectedItem().toString();
 
                 printToUser = UserDatabase.createUser(newUser.getText().toString(),
                         newPassword.getText().toString(), name.getText().toString(),
-                        ageInt, heightInt, weightInt);
+                        ageInt, heightInt, weightInt, selectedSex);
                 createAccountInfo.setText(printToUser);
 
             }

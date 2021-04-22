@@ -8,14 +8,16 @@ public class User {
     private int age;
     private int height;
     private int weight;
+    private String sex;
 
-    public User(String l, String m, String n, int o, int p, int q) {
+    public User(String l, String m, String n, int o, int p, int q, String r) {
         user = l;
         password = m;
         name = n;
         age = o;
         height = p;
         weight = q;
+        sex = r;
     }
 
     public String getUser() {
@@ -40,6 +42,10 @@ public class User {
 
     public int getWeight() {
         return weight;
+    }
+
+    public String getSex() {
+        return sex;
     }
 
 }

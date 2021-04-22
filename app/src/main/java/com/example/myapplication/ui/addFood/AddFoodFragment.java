@@ -89,24 +89,29 @@ public class AddFoodFragment extends Fragment {
         if(0 <= intFromUser && intFromUser <= 200) {
             if(selected_Food == "Nauta") {
                 selected_Food = "beef";
-                //noora lisää näihin kohtii indeksin että saa haettua proteiinin
+                //noora lisäsi näihin kohtii indeksin että saa haettua proteiinin
                 arrayIndex = 0;
                 consumedProtein = ProteinCalculator.countConsumedProtein(intFromUser, arrayIndex);
             } else if(selected_Food == "Kala") {
                 selected_Food = "fish";
                 arrayIndex = 1;
+                consumedProtein = ProteinCalculator.countConsumedProtein(intFromUser, arrayIndex);
             } else if(selected_Food == "Porsas") {
                 selected_Food = "porkPoultryLevel";
                 arrayIndex = 2;
+                consumedProtein = ProteinCalculator.countConsumedProtein(intFromUser, arrayIndex);
             }else if(selected_Food == "Kana") {
                 selected_Food = "porkPoultryLevel";
                 arrayIndex = 3;
+                consumedProtein = ProteinCalculator.countConsumedProtein(intFromUser, arrayIndex);
             }else if(selected_Food == "Juusto") {
                 selected_Food = "cheese";
                 arrayIndex = 4;
+                consumedProtein = ProteinCalculator.countConsumedProtein(intFromUser, arrayIndex);
             }else if(selected_Food == "Riisi") {
                 selected_Food = "rice";
                 arrayIndex = 5;
+                consumedProtein = ProteinCalculator.countConsumedProtein(intFromUser, arrayIndex);
             }
 
             try {

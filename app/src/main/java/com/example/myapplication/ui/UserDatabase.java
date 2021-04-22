@@ -17,7 +17,7 @@ public class UserDatabase extends Activity{
         array = new User[6];
     }
 
-    public static String createUser(String newUser, String newPassword, String name, int age, int height, int weight) {
+    public static String createUser(String newUser, String newPassword, String name, int age, int height, int weight, String selectedSex) {
         String returnStatement = "";
         int usersCount = 0;
         int passMinLenght = 12; //minimum lenght given in the final project instructions
@@ -37,11 +37,12 @@ public class UserDatabase extends Activity{
         } else if (PasswordTester.containsSpecialCharacter(newPassword) == false) {
             returnStatement = "Salasana ei sisältänyt erikoismerkkiä";
         } else {
-            User temp = new User(newUser, newPassword, name, age, height, weight);
+            User temp = new User(newUser, newPassword, name, age, height, weight, selectedSex);
             array[usersCount] = (temp);
             System.out.println(array[usersCount].getUser());
             System.out.println(array[usersCount].getPassword());
             System.out.println(array[usersCount].getAge());
+            System.out.println(array[usersCount].getSex());
             returnStatement = "Tili luotu. Kirjaudu sisään.";
         }
         return returnStatement;
@@ -88,8 +89,21 @@ public class UserDatabase extends Activity{
 
     public static String dailyProteinGoal () {
         String str = "";
+        int index = 0;
 
-        //The daily protein intake is calculated using user's age, weight and height
+        String sex = array[index].getSex();
+        double dailyCalories = 0;
+        int dailyProtein = 0;
+
+        //Calorine goal formula is Harris-Benedict BMR - link below
+        //https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation
+        if (sex.equals("nainen") == true) {
+            dailyCalories = 655 + (9.563 * array[index].getWeight()) + (1.850 * array[index].getHeight()) - (4.676 * array[index].getAge());
+        } else if (sex.equals("mies") == true) {
+            dailyCalories = 66.5 + (13.75 * array[index].getWeight()) + (5.003 * array[index].getHeight()) - (6.755 * array[index].getAge());
+        }
+
+        //The daily protein intake is calculated utilising BMI and user's age, weight and height
         //basal metabolism rate
 
         return str;
