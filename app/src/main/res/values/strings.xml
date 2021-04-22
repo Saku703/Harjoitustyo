@@ -10,13 +10,10 @@
     <string name="menu_home">Home</string>
     <string name="menu_addFood">addFood</string>
     <string name="menu_log">Log</string>
-<<<<<<< HEAD
 
     <string-array name="chooseSex">
         <item>mies</item>
         <item>nainen</item>
     </string-array>
-=======
     <string name="n_yt_lokitiedot">Näytä lokitiedot</string>
->>>>>>> ecf0e4a386dd2247007254dfe2858b96e46bb004
 </resources>
