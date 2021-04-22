@@ -12,22 +12,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Emission {
-    float co2_value;
+    String co2_value;
     int food_value;
     int arrayIndex;
     String consumedProtein;
 
     public Emission() {
-        co2_value = 0;
+        co2_value = "";
         food_value = 0;
         arrayIndex = 0;
         consumedProtein = "";
     }
 
-    public float readXML(int value, String food_choice) {
+    public String readXML(int value, String food_choice) {
         /*int intFromUser = Integer.parseInt(value.getText().toString());
         String selected_Food = food_choice.getSelectedItem().toString();*/
         if(0 <= value && value <= 200) {
+            this.food_value = value;
             if(food_choice == "Nauta") {
                 food_choice = "beef";
             } else if(food_choice == "Kala") {
@@ -67,7 +68,8 @@ public class Emission {
                 String[] tokensTotal = totalString.split(":");
                 String total = tokensTotal[1];
                 total = total.substring(0, total.length() - 1).trim();
-                this.co2_value = Float.parseFloat(total);
+                this.co2_value = total;
+                //this.co2_value = Float.parseFloat(total);
                 //System.out.println(co2_value);
                 //System.out.println(co2_value);
                 //textview_CO2.setText(co2_value.toString());

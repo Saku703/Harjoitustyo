@@ -38,7 +38,7 @@ public class AddFoodFragment extends Fragment {
     private TextView textView_Food;
     private TextView textview_CO2;
     private TextView textview_Header;
-    private float co2_value;
+    private float averageCO2Value;
 
     private TextView textView_protein;
 
@@ -73,9 +73,7 @@ public class AddFoodFragment extends Fragment {
         textview_Header = (TextView) root.findViewById(R.id.textView_Header);
         textview_Header.setText("Tarkista ympäristöystävällisin (proteiinin) lähde!");
         textView_protein = (TextView) root.findViewById(R.id.textView_protein);
-
         ProteinCalculator.populateArray();
-
         button_API = (Button) root.findViewById(R.id.button_API);
         button_API.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +85,8 @@ public class AddFoodFragment extends Fragment {
         });
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        AverageCO2 avg = new AverageCO2();
+        averageCO2Value = avg.getAverageCO2();
         return root;
     }
 
@@ -97,15 +97,16 @@ public class AddFoodFragment extends Fragment {
         int intFromUser = Integer.parseInt(userInput.getText().toString());
         String selected_Food = spinner_Foods.getSelectedItem().toString();
         Emission emission = new Emission();
-        Protein protein = new Protein();
-        co2_value = emission.readXML(intFromUser, selected_Food);
+        //Protein protein = new Protein();
+        //System.out.println(averageCO2Value);
+        String co2_value = emission.readXML(intFromUser, selected_Food);
         consumedProtein = emission.getConsumedProtein(intFromUser, selected_Food);
         //String co2_output = co2_value.toString;
-        textview_CO2.setText("intFromUser");
+        textview_CO2.setText(co2_value);
         textView_protein.setText(consumedProtein);
-        System.out.println(co2_value);
-        System.out.println(protein.getProtein_beef());
-        System.out.println(protein.getProtein_fish());
+        //System.out.println(co2_value);
+        //System.out.println(protein.getProtein_beef());
+        //System.out.println(protein.getProtein_fish());
         /*
         if(0 <= intFromUser && intFromUser <= 200) {
             if(selected_Food == "Nauta") {
