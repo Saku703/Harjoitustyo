@@ -74,4 +74,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_Foods" />
 
+    <TextView
+        android:id="@+id/textView_Header"
+        android:layout_width="87dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="165dp"
+        android:layout_marginBottom="87dp"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_Foods"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

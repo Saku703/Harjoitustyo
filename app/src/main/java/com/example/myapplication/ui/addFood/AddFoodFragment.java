@@ -36,6 +36,8 @@ public class AddFoodFragment extends Fragment {
     private EditText userInput;
     private TextView textView_Food;
     private TextView textview_CO2;
+    private TextView textview_Header;
+    private float co2_value;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,10 +67,14 @@ public class AddFoodFragment extends Fragment {
         userInput = (EditText) root.findViewById(R.id.userInput);
         userInput.setText("0");
         textview_CO2 = (TextView) root.findViewById(R.id.textView_CO2);
+        textview_Header = (TextView) root.findViewById(R.id.textView_Header);
+        textview_Header.setText("Tarkista ympäristöystävällisin (proteiinin) lähde!");
         button_API = (Button) root.findViewById(R.id.button_API);
         button_API.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //AddFood food = new AddFood();
+                //food.readXML();
                 readXML(v);
             }
         });
@@ -80,7 +86,15 @@ public class AddFoodFragment extends Fragment {
     public void readXML(View v) {
         int intFromUser = Integer.parseInt(userInput.getText().toString());
         String selected_Food = spinner_Foods.getSelectedItem().toString();
-        System.out.println(intFromUser);
+        Emission emission = new Emission();
+        Protein protein = new Protein();
+        co2_value = emission.readXML(intFromUser, selected_Food);
+        //String co2_output = co2_value.toString;
+        textview_CO2.setText("intFromUser");
+        System.out.println(co2_value);
+        System.out.println(protein.getProtein_beef());
+        System.out.println(protein.getProtein_fish());
+        /*
         if(0 <= intFromUser && intFromUser <= 200) {
             if(selected_Food == "Nauta") {
                 selected_Food = "beef";
@@ -130,6 +144,6 @@ public class AddFoodFragment extends Fragment {
             }
         } else {
             System.out.println("Anna luku 0 ja 200 väliltä!");
-        }
+        }*/
     }
 }
