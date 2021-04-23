@@ -73,6 +73,7 @@ public class AddFoodFragment extends Fragment {
         textview_Header.setText("Tarkista ympäristöystävällisin (proteiinin) lähde!");
         textView_protein = (TextView) root.findViewById(R.id.textView_protein);
         ProteinCalculator.populateArray();
+
         button_API = (Button) root.findViewById(R.id.button_API);
         button_API.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +83,7 @@ public class AddFoodFragment extends Fragment {
                 readXML(v);
             }
         });
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         AverageCO2 avg = new AverageCO2();
