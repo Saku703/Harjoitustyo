@@ -38,6 +38,7 @@ public class UserDatabase extends Activity{
             returnStatement = "Salasana ei sisältänyt erikoismerkkiä";
         } else {
             User temp = new User(newUser, newPassword, name, age, height, weight, selectedSex);
+            JSONWriter.basicInfoJSON(newUser, newPassword, name, age, height, weight, selectedSex); //lisäys lokitietoihin
             array[usersCount] = (temp);
             System.out.println(array[usersCount].getUser());
             System.out.println(array[usersCount].getPassword());

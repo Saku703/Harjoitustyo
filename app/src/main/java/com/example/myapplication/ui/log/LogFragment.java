@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.JSONReader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,7 +28,7 @@ import java.util.Map;
 
 public class LogFragment extends Fragment {
 
-    TextView logtext;
+    private static TextView logtext;
 
     private LogViewModel logViewModel;
 
@@ -49,7 +50,8 @@ public class LogFragment extends Fragment {
         button_log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readJSON(v);
+                String json = JSONReader.readJSON(v);
+                logtext.setText("Lokitiedot:\n" + json);
             }
         });
 
@@ -81,7 +83,7 @@ public class LogFragment extends Fragment {
 
     ////////////////////
 
-    public void readJSON(View v){
+    /*public void readJSON(View v){
         String json = getJSON();
         logtext.setText("Lokitiedot:\n" + json);
     }
@@ -140,5 +142,5 @@ public class LogFragment extends Fragment {
 
         response=sb.toString();
         return response;
-    }
+    }*/
 }

@@ -18,6 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.JSONWriter;
 import com.example.myapplication.ui.ProteinCalculator;
 
 import java.io.BufferedReader;
@@ -108,6 +109,9 @@ public class AddFoodFragment extends Fragment {
         //System.out.println(protein.getProtein_fish());
         /*
         if(0 <= intFromUser && intFromUser <= 200) {
+
+            JSONWriter.updateJSON(intFromUser, selected_Food);
+
             if(selected_Food == "Nauta") {
                 selected_Food = "beef";
                 //noora lisäsi näihin kohtii indeksin että saa haettua proteiinin
