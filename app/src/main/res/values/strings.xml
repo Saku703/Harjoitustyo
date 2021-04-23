@@ -15,5 +15,15 @@
         <item>mies</item>
         <item>nainen</item>
     </string-array>
+
+    <string-array name="chooseFood">
+        <item>Nauta</item>
+        <item>Kala</item>
+        <item>Porsas</item>
+        <item>Kana</item>
+        <item>Juusto</item>
+        <item>Riisi</item>
+    </string-array>
+
     <string name="n_yt_lokitiedot">Näytä lokitiedot</string>
 </resources>

@@ -40,7 +40,8 @@ public class PasswordTester {
 
     public static boolean containsSpecialCharacter (String password) {
         boolean result = false;
-        String regex = ".*[!@#$%^&(){}:;'<>,?/~`_+-=|\\\\].*";
+        //String regex = ".*[!@#$%^&(){}:;'<>,?/~`_+-=|\\\\].*";
+        String regex = ".*(?=.[-_!@#$%^&\\\\]).*";
         Pattern pattern = Pattern.compile(regex);
         result = pattern.matcher(password).matches();
         return result;

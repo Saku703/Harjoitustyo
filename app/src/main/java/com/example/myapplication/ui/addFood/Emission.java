@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static java.lang.Math.round;
+
 public class Emission {
     String co2_value;
     int food_value;
@@ -69,6 +71,7 @@ public class Emission {
                 String total = tokensTotal[1];
                 total = total.substring(0, total.length() - 1).trim();
                 this.co2_value = total;
+                //String str = Double.toString(protein);
                 //this.co2_value = Float.parseFloat(total);
                 //System.out.println(co2_value);
                 //System.out.println(co2_value);

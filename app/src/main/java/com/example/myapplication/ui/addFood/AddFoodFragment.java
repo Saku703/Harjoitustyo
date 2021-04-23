@@ -64,7 +64,14 @@ public class AddFoodFragment extends Fragment {
         foods.add("Kana");
         foods.add("Juusto");
         foods.add("Riisi");
+
+
+        /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.chooseSex, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        chooseSex.setAdapter(adapter); */
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, foods);
+        //ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this.getContext(), R.array.chooseFood, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_Foods.setAdapter(arrayAdapter);
         userInput = (EditText) root.findViewById(R.id.userInput);
@@ -93,7 +100,6 @@ public class AddFoodFragment extends Fragment {
 
     public void readXML(View v) {
         int arrayIndex = 0;
-        String consumedProtein = "";
 
         int intFromUser = Integer.parseInt(userInput.getText().toString());
         String selected_Food = spinner_Foods.getSelectedItem().toString();
@@ -101,7 +107,7 @@ public class AddFoodFragment extends Fragment {
         //Protein protein = new Protein();
         //System.out.println(averageCO2Value);
         String co2_value = emission.readXML(intFromUser, selected_Food);
-        consumedProtein = emission.getConsumedProtein(intFromUser, selected_Food);
+        String consumedProtein = emission.getConsumedProtein(intFromUser, selected_Food);
         //String co2_output = co2_value.toString;
         textview_CO2.setText(co2_value);
         textView_protein.setText(consumedProtein);
