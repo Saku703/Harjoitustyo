@@ -3,6 +3,7 @@ package com.example.myapplication.ui.addFood;
 import android.text.Editable;
 import android.widget.EditText;
 
+import com.example.myapplication.ui.JSONWriter;
 import com.example.myapplication.ui.ProteinCalculator;
 
 import java.io.BufferedReader;
@@ -28,6 +29,7 @@ public class Emission {
         /*int intFromUser = Integer.parseInt(value.getText().toString());
         String selected_Food = food_choice.getSelectedItem().toString();*/
         if(0 <= value && value <= 200) {
+            JSONWriter.updateJSON(value, food_choice);
             this.food_value = value;
             if(food_choice == "Nauta") {
                 food_choice = "beef";
