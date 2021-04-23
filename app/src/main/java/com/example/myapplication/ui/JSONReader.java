@@ -48,17 +48,20 @@ public class JSONReader {
         ////////////////////////////////////////////////
 
         try {
-            /*JSONArray user_data = log.getJSONArray("user_info");
-            String log_line_one = String.valueOf((user_data.getJSONObject(0)));
-            JSONObject first_line = new JSONObject(log_line_one);
-            sb.append("Käyttäjän tiedot: ");
-            sb.append(first_line.getString("user_user"));
-            sb.append(", ").append(first_line.getString("user_password"));
-            sb.append(", ").append(first_line.getString("user_name"));
-            sb.append(", ").append(first_line.getInt("user_age"));
-            sb.append(", ").append(first_line.getInt("user_height"));
-            sb.append(", ").append(first_line.getInt("user_weight"));
-            sb.append(", ").append(first_line.getString("user_sex")).append("\n");*/
+            if (log.getJSONArray("user_info") != null){
+                JSONArray user_data = log.getJSONArray("user_info");
+                String log_line_one = String.valueOf((user_data.getJSONObject(0)));
+                JSONObject first_line = new JSONObject(log_line_one);
+                sb.append("Käyttäjän tiedot: ");
+                sb.append(first_line.getString("user_user"));
+                sb.append(", ").append(first_line.getString("user_password"));
+                sb.append(", ").append(first_line.getString("user_name"));
+                sb.append(", ").append(first_line.getInt("user_age"));
+                sb.append(", ").append(first_line.getInt("user_height"));
+                sb.append(", ").append(first_line.getInt("user_weight"));
+                sb.append(", ").append(first_line.getString("user_sex")).append("\n");
+            } else {System.out.println("Ei käyttäjätietoja syötetty.\n");}
+
 
             //JSONArray data = esimerkki.getJSONArray("log_data");
 
