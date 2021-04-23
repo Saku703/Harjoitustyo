@@ -48,7 +48,7 @@ public class JSONReader {
         ////////////////////////////////////////////////
 
         try {
-            JSONArray user_data = log.getJSONArray("user_info");
+            /*JSONArray user_data = log.getJSONArray("user_info");
             String log_line_one = String.valueOf((user_data.getJSONObject(0)));
             JSONObject first_line = new JSONObject(log_line_one);
             sb.append("Käyttäjän tiedot: ");
@@ -58,7 +58,7 @@ public class JSONReader {
             sb.append(", ").append(first_line.getInt("user_age"));
             sb.append(", ").append(first_line.getInt("user_height"));
             sb.append(", ").append(first_line.getInt("user_weight"));
-            sb.append(", ").append(first_line.getString("user_sex")).append("\n");
+            sb.append(", ").append(first_line.getString("user_sex")).append("\n");*/
 
             //JSONArray data = esimerkki.getJSONArray("log_data");
 
