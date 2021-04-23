@@ -1,9 +1,12 @@
 package com.example.myapplication.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +28,6 @@ public class OpeningFragment extends Fragment {
     private EditText user;
     private EditText password;
     private Button logIn;
-    private TextView loginInfo;
 
     //create account
     private EditText newUser;
@@ -38,6 +40,9 @@ public class OpeningFragment extends Fragment {
     private EditText weight;
     private Spinner chooseSex;
 
+    //navigation bar header
+    //public TextView usernameInHeader;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         /*openingViewModel =
@@ -49,7 +54,6 @@ public class OpeningFragment extends Fragment {
         user = (EditText) root.findViewById(R.id.userLogin_opening);
         password = (EditText) root.findViewById(R.id.passwordLogin_opening);
         logIn = (Button) root.findViewById(R.id.button1_opening);
-        loginInfo = (TextView) root.findViewById(R.id.infoLogin_opening);
 
         newUser = (EditText) root.findViewById(R.id.userCreateAccount_opening);
         newPassword = (EditText) root.findViewById(R.id.passwordCreateAccount_opening);
@@ -61,22 +65,16 @@ public class OpeningFragment extends Fragment {
         weight = (EditText) root.findViewById(R.id.weight_opening);
         chooseSex = (Spinner) root.findViewById(R.id.spinner_opening);
 
+        //usernameInHeader = (TextView) root.findViewById(R.id.textView_navigationHeader);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.chooseSex, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chooseSex.setAdapter(adapter);
         //chooseSex.setOnItemSelectedListener();
 
-
-
-        //log in button -> user database call -> search wether user & password are in the database
-        logIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String printToUser = "";
-                printToUser = UserDatabase.logIn(user.getText().toString(), password.getText().toString());
-                welcome.setText(printToUser);
-            }
-        });
+        /*
+        InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        mgr.hideSoftInputFromWindow(mEditText.getWindowToken(), 0); */
 
         //create account button -> user database call -> create new user
         createAccount.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +92,18 @@ public class OpeningFragment extends Fragment {
                         ageInt, heightInt, weightInt, selectedSex);
                 createAccountInfo.setText(printToUser);
 
+            }
+        });
+
+        //log in button -> user database call -> search wether user & password are in the database
+        logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String printToUser = "";
+                printToUser = UserDatabase.logIn(user.getText().toString(), password.getText().toString());
+                welcome.setText(printToUser);
+                //usernameInHeader.setText("moi");
+               // NavHeaderMain.changeUsername();
             }
         });
 

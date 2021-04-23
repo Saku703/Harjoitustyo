@@ -108,6 +108,7 @@ public class UserDatabase extends Activity{
         //The daily protein intake is calculated utilising BMI and user's age, weight and height
         //basal metabolism rate
 
+
         return str;
     }
 }
