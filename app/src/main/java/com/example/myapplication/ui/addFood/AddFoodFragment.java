@@ -68,7 +68,6 @@ public class AddFoodFragment extends Fragment {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_Foods.setAdapter(arrayAdapter);
         userInput = (EditText) root.findViewById(R.id.userInput);
-        userInput.setText("0");
         textview_CO2 = (TextView) root.findViewById(R.id.textView_CO2);
         textview_Header = (TextView) root.findViewById(R.id.textView_Header);
         textview_Header.setText("Tarkista ympäristöystävällisin (proteiinin) lähde!");
