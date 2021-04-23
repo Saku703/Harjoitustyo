@@ -51,7 +51,6 @@ public class Emission {
                 String url = "https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=omnivore";
                 StringBuilder builder = new StringBuilder(url);
                 CharSequence chSeq = "&query."+ food_choice +"Level=" + value;
-                System.out.println(chSeq);
                 builder.append(chSeq);
 
                 URL obj = new URL(builder.toString());
@@ -65,29 +64,21 @@ public class Emission {
                 }
                 br.close();
                 String outputString = response.toString();
-                System.out.println(outputString);
                 String[] tokensAll = outputString.split(",");
 
                 String totalString = tokensAll[4];
                 String[] tokensTotal = totalString.split(":");
                 String total = tokensTotal[1];
                 total = total.substring(0, total.length() - 1).trim();
-                this.co2_value = total;
-                //String str = Double.toString(protein);
-                //this.co2_value = Float.parseFloat(total);
-                //System.out.println(co2_value);
-                //System.out.println(co2_value);
-                //textview_CO2.setText(co2_value.toString());
-                //return co2_value;
+                System.out.println(total);
+                float f = Float.parseFloat(total);
+                int b = (int) Math.round(f);
+                this.co2_value = Integer.toString(b);
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {
-            //return 0;
-            //System.out.println("Anna luku 0 ja 200 väliltä!");
-        }
-        return co2_value;
+        } return co2_value;
     }
 
     public String getConsumedProtein(int value, String food_choice) {

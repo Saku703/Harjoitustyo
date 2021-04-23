@@ -100,16 +100,13 @@ public class AddFoodFragment extends Fragment {
     }
 
     public void readXML(View v) {
-        int arrayIndex = 0;
+        //int arrayIndex = 0;
 
         int intFromUser = Integer.parseInt(userInput.getText().toString());
         String selected_Food = spinner_Foods.getSelectedItem().toString();
         Emission emission = new Emission();
-        //Protein protein = new Protein();
-        //System.out.println(averageCO2Value);
         String co2_value = emission.readXML(intFromUser, selected_Food);
         String consumedProtein = emission.getConsumedProtein(intFromUser, selected_Food);
-        //String co2_output = co2_value.toString;
         if(co2_value == "") {
             textview_CO2.setText("Anna arvo 0-200 väliltä");
             textView_protein.setText("");
@@ -117,9 +114,6 @@ public class AddFoodFragment extends Fragment {
             textview_CO2.setText(co2_value);
             textView_protein.setText(consumedProtein);
         }
-        //System.out.println(co2_value);
-        //System.out.println(protein.getProtein_beef());
-        //System.out.println(protein.getProtein_fish());
         /*
         if(0 <= intFromUser && intFromUser <= 200) {
 
