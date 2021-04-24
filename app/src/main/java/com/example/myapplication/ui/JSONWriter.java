@@ -12,9 +12,11 @@ public class JSONWriter {
 
     public static void basicInfoJSON(String user_user, String user_password, String user_name, int user_age, int user_height, int user_weight, String user_sex){
         JSONObject basic_info_variable = new JSONObject();
+        //populating JSONObject with basic user information
         try {
             basic_info_variable.put("user_user", user_user);
             basic_info_variable.put("user_password", user_password);
+            basic_info_variable.put("user_name", user_name);
             basic_info_variable.put("user_age", user_age);
             basic_info_variable.put("user_height", user_height);
             basic_info_variable.put("user_weight", user_weight);
@@ -28,6 +30,7 @@ public class JSONWriter {
 
     public static void updateJSON(int amount_of_food, String food_type){
         JSONObject ingredient = new JSONObject();
+        //adds the name of the food and amount eaten to JSONArray every time user inputs them
         try {
             ingredient.put("food_item", food_type);
             ingredient.put("food_amount", amount_of_food);
