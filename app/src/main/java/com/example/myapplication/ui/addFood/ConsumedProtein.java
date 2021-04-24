@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ConsumedProtein {
-    int arrayIndex;
+    int arrayIndex; 
     String consumedProtein;
 
     public ConsumedProtein() {
@@ -21,6 +21,7 @@ public class ConsumedProtein {
     public String getConsumedProtein(int value, String food_choice) {
 
         if(0 <= value && value <= 200) {
+            JSONWriter.updateJSON(value, food_choice);
             if (food_choice == "Nauta") {
                 arrayIndex = 0;
                 consumedProtein = ProteinCalculator.countConsumedProtein(value, arrayIndex);
