@@ -6,31 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.weaher.WeatherFragment">
 
-    <Button
-        android:id="@+id/button_weather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="175dp"
-        android:layout_marginEnd="38dp"
-        android:layout_marginBottom="508dp"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText_weatherInput"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/editText_weatherInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="178dp"
+        android:layout_marginTop="208dp"
         android:layout_marginEnd="38dp"
         android:ems="10"
+        android:hint="Kaupungin nimi"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toStartOf="@+id/button_weather"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,14 +25,63 @@
         android:id="@+id/textView_cityHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="142dp"
-        android:layout_marginEnd="260dp"
-        android:layout_marginBottom="17dp"
-        android:text="TextView"
+        android:layout_marginBottom="8dp"
+        android:text="Syötä kaupunki ja hae sää"
         app:layout_constraintBottom_toTopOf="@+id/editText_weatherInput"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:text="Hae"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="210dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Liiku ulkona samalla kun syöt ympäristöystävällisesti!"
+        android:textColor="#4CAF50"
+        app:layout_constraintBottom_toTopOf="@+id/textView_cityHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.431" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_weather"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Millainen ulkoilusää tänään on?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_cloud"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
