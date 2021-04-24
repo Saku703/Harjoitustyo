@@ -39,21 +39,26 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 public class AddFoodFragment extends Fragment {
 
     //private AddFoodViewModel addFoodViewModel;
-    private Button button_API;
-    private Button button_protein;
-    private Spinner spinner_Foods;
-    private EditText userInput;
-    private EditText userInputProtein;
-    private TextView textView_Food;
-    private TextView textview_CO2;
     //private TextView textview_Header;
-    private TextView textView_proteinGoal;
-    private String averageCO2Value;
-    private CheckBox activityLevel;
-    private TextView infoForUserX;
-    private static TextView infoAverageCO2;
 
+    //Collecting user input
+    private TextView textView_Food;
+    private Spinner spinner_Foods;
+    private EditText userInputAPI;
+    private Button button_API;
+    private EditText userInputProtein;
+    private Button button_protein;
+
+    //CO2 emissions
+    private TextView textview_CO2;
+    private String averageCO2Value;
+    private TextView infoAverageCO2;
+
+    //protein
+    private TextView infoForUserX;
     private TextView textView_protein;
+    private TextView textView_proteinGoal;
+    private CheckBox activityLevel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -78,27 +83,22 @@ public class AddFoodFragment extends Fragment {
         foods.add("Juusto");
         foods.add("Riisi");
 
-
-        /*ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.chooseSex, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        chooseSex.setAdapter(adapter); */
-
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, foods);
-        //ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this.getContext(), R.array.chooseFood, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_Foods.setAdapter(arrayAdapter);
-        userInput = (EditText) root.findViewById(R.id.userInput);
+
+        userInputAPI = (EditText) root.findViewById(R.id.userInput);
         userInputProtein = (EditText) root.findViewById(R.id.userInputProtein);
         textview_CO2 = (TextView) root.findViewById(R.id.textView_CO2);
+        infoAverageCO2 = (TextView) root.findViewById(R.id.textView_finnishAverage);
         //textview_Header = (TextView) root.findViewById(R.id.textView_Header);
         //textview_Header.setText("Tarkista ympäristöystävällisin (proteiinin) lähde!");
+        infoForUserX = (TextView) root.findViewById(R.id.textView_infoForUserX);
         textView_protein = (TextView) root.findViewById(R.id.textView_protein);
         textView_proteinGoal = (TextView) root.findViewById(R.id.textView_proteinGoal);
         activityLevel = (CheckBox) root.findViewById(R.id.checkBox_activityLevel);
-        infoForUserX = (TextView) root.findViewById(R.id.textView_infoForUserX);
-        infoAverageCO2 = (TextView) root.findViewById(R.id.textView_finnishAverage);
-        //ProteinCalculator.populateArray();
 
+        //CO2 emissions button
         button_API = (Button) root.findViewById(R.id.button_API);
         button_API.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +107,7 @@ public class AddFoodFragment extends Fragment {
             }
         });
 
+        //protein button
         button_protein = (Button) root.findViewById(R.id.button_protein);
         button_protein.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +126,7 @@ public class AddFoodFragment extends Fragment {
 
     public void readXML(View v) {
 
-        int intFromUser = Integer.parseInt(userInput.getText().toString());
+        int intFromUser = Integer.parseInt(userInputAPI.getText().toString());
         String selected_Food = spinner_Foods.getSelectedItem().toString();
 
         Emission emission = new Emission();

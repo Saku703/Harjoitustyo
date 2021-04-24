@@ -1,6 +1,7 @@
 package com.example.myapplication.ui;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
@@ -33,19 +34,19 @@ public class OpeningFragment extends Fragment {
     private CheckBox showPassword_logIn;
 
     //create account
+    private TextView createAccountInfo;
     private EditText newUser;
     private EditText newPassword;
-    private Button createAccount;
-    private TextView createAccountInfo;
     private EditText name;
     private EditText age;
     private EditText height;
     private EditText weight;
     private Spinner chooseSex;
+    private Button createAccount;
     private CheckBox showPassword_createAccount;
 
-    //navigation bar header
-    //public TextView usernameInHeader;
+    //for both functions
+    private String areFieldsFilled = "";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -71,16 +72,10 @@ public class OpeningFragment extends Fragment {
         chooseSex = (Spinner) root.findViewById(R.id.spinner_opening);
         showPassword_createAccount = (CheckBox) root.findViewById(R.id.showPass_createAccount);
 
-        //usernameInHeader = (TextView) root.findViewById(R.id.textView_navigationHeader);
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.chooseSex, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chooseSex.setAdapter(adapter);
-        //chooseSex.setOnItemSelectedListener();
-
-        /*
-        InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        mgr.hideSoftInputFromWindow(mEditText.getWindowToken(), 0); */
+        UserInputTester userInputTester = new UserInputTester();
 
         //create account button -> user database call -> create new user
         createAccount.setOnClickListener(new View.OnClickListener() {
@@ -88,16 +83,25 @@ public class OpeningFragment extends Fragment {
             public void onClick(View v) {
                 String printToUser = "";
 
-                int ageInt = Integer.parseInt(age.getText().toString());
-                int heightInt = Integer.parseInt(height.getText().toString());
-                int weightInt = Integer.parseInt(weight.getText().toString());
-                String selectedSex = chooseSex.getSelectedItem().toString();
-
-                printToUser = UserDatabase.createUser(newUser.getText().toString(),
+                areFieldsFilled = userInputTester.createAccountInputTester(newUser.getText().toString(),
                         newPassword.getText().toString(), name.getText().toString(),
-                        ageInt, heightInt, weightInt, selectedSex);
-                createAccountInfo.setText(printToUser);
+                        age.getText().toString(), height.getText().toString(),
+                        weight.getText().toString(), chooseSex.getSelectedItem().toString());
 
+                if (areFieldsFilled.equals("OK") == true) {
+                    int ageInt = Integer.parseInt(age.getText().toString());
+                    int heightInt = Integer.parseInt(height.getText().toString());
+                    int weightInt = Integer.parseInt(weight.getText().toString());
+                    String selectedSex = chooseSex.getSelectedItem().toString();
+
+                    printToUser = UserDatabase.createUser(newUser.getText().toString(),
+                            newPassword.getText().toString(), name.getText().toString(),
+                            ageInt, heightInt, weightInt, selectedSex);
+                    createAccountInfo.setText(printToUser);
+                } else {
+                    //printing the warning to user
+                    createAccountInfo.setText(areFieldsFilled);
+                }
             }
         });
 
@@ -106,12 +110,16 @@ public class OpeningFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String printToUser = "";
-                printToUser = UserDatabase.logIn(user.getText().toString(), password.getText().toString());
-                welcome.setText(printToUser);
 
+                areFieldsFilled = userInputTester.logInInputTester(user.getText().toString(), password.getText().toString());
 
-                //usernameInHeader.setText("moi");
-                //NavHeaderMain.changeUsername();
+                if (areFieldsFilled.equals("OK") == true) {
+                    printToUser = UserDatabase.logIn(user.getText().toString(), password.getText().toString());
+                    welcome.setText(printToUser);
+                } else {
+                    //printing the warning to user
+                    welcome.setText(areFieldsFilled);
+                }
             }
         });
 

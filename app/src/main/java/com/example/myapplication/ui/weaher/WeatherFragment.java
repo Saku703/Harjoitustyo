@@ -29,6 +29,7 @@ public class WeatherFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_weather, container, false);
+
         textView_cityHeader = (TextView) root.findViewById(R.id.textView_cityHeader);
         textView_cityHeader.setText("Syötä kaupunki");
         textView_weatherData = (TextView) root.findViewById(R.id.textView_weatherData);
@@ -37,12 +38,15 @@ public class WeatherFragment extends Fragment {
         editText_weatherInput.setText("");
         button_weather = (Button) root.findViewById(R.id.button_weather);
         button_weather.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                //Utilising the passwordtester again with city names: reusing excisting code.
+                PasswordTester passwordTester = new PasswordTester();
 
-                if (PasswordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
+                if (passwordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
-                } else if (PasswordTester.containsSpecialCharacter(editText_weatherInput.getText().toString()) == true) {
+                } else if (passwordTester.containsSpecialCharacter(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
                 } else {
                     String url = "https://goweather.herokuapp.com/weather/";
@@ -56,7 +60,8 @@ public class WeatherFragment extends Fragment {
                             String str = new String(responseBody);
                             String full_weather_report = Weather.getWeather(str);
                             if (full_weather_report == "") {
-                                textView_weatherData.setText("Säätietoja ei saatavilla paikkaan "+ editText_weatherInput.getText().toString() +". Tarkista syötteesi.");
+                                textView_weatherData.setText("Säätietoja ei ole saatavilla paikkaan " +
+                                        editText_weatherInput.getText().toString() + ". Tarkista syötteesi.");
                             } else {
                                 textView_weatherData.setText(full_weather_report);
                             }
@@ -64,13 +69,13 @@ public class WeatherFragment extends Fragment {
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                            textView_weatherData.setText("Säätietoja ei ole juuri nyt saatavilla hakemaasi paikkaan");
+                            textView_weatherData.setText("Säätietoja ei ole juuri nyt saatavilla paikkaan " +
+                                    editText_weatherInput.getText().toString() + ". Yritä myöhemmin uudestaan");
                         }
                     });
                 }
             }
         });
-
         return root;
     }
 }

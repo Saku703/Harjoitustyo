@@ -28,8 +28,6 @@ public class Emission {
     }
 
     public String readXML(int value, String food_choice) {
-        /*int intFromUser = Integer.parseInt(value.getText().toString());
-        String selected_Food = food_choice.getSelectedItem().toString();*/
         if(0 <= value && value <= 200) {
             JSONWriter.updateJSON(value, food_choice);
             this.food_value = value;

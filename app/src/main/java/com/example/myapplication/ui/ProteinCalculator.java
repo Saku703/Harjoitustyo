@@ -33,7 +33,6 @@ public class ProteinCalculator {
     public static String countConsumedProtein (int consumedAmount, int index) {
         double protein = 0.0;
         System.out.println("indeksi" + index);
-        //populateArray();
 
         protein = array[index].getProtein() * consumedAmount;
         System.out.println(protein);

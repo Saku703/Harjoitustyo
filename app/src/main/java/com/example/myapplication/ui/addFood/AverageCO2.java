@@ -9,15 +9,12 @@ import java.net.URL;
 import static java.lang.Math.round;
 
 public class AverageCO2 {
-
     float averageCO2Value;
     String returnStatement;
 
     public AverageCO2(){
-
         averageCO2Value = 0;
         returnStatement = "";
-
     }
 
     public String getAverageCO2() {

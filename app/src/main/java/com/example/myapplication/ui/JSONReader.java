@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import static com.example.myapplication.ui.JSONWriter.log;
 
 public class JSONReader {
-
     static TextView logtext;
 
     public static String readJSON(View v){

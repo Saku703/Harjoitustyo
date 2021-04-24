@@ -3,18 +3,26 @@ package com.example.myapplication.ui;
 import java.util.regex.Pattern;
 
 public class PasswordTester {
+    boolean result;
+    String regex;
+    char ch;
 
-    public static boolean containsNumber (String password) {
-        boolean result = false;
-        String regex = ".*\\d.*";
+    public PasswordTester() {
+        result = false;
+        regex = "";
+        char ch;
+    }
+
+    public boolean containsNumber (String password) {
+        result = false;
+        regex = ".*\\d.*";
         Pattern pattern = Pattern.compile(regex);
         result = pattern.matcher(password).matches();
         return result;
     }
 
-    public static boolean containsCapitalLetter (String password, int passLenght) {
-        boolean result = false;
-        char ch;
+    public boolean containsCapitalLetter (String password, int passLenght) {
+        result = false;
 
         for (int i=0; i < passLenght; i++) {
             ch = password.charAt(i);
@@ -25,9 +33,8 @@ public class PasswordTester {
         return result;
     }
 
-    public static boolean containsSmallLetter (String password, int passLenght) {
-        boolean result = false;
-        char ch;
+    public boolean containsSmallLetter (String password, int passLenght) {
+        result = false;
 
         for (int i=0; i < passLenght; i++) {
             ch = password.charAt(i);
@@ -38,10 +45,10 @@ public class PasswordTester {
         return result;
     }
 
-    public static boolean containsSpecialCharacter (String password) {
-        boolean result = false;
-        //String regex = ".*[!@#$%^&(){}:;'<>,?/~`_+-=|\\\\].*";
-        String regex = ".*(?=.[-_!@#$%^&\\\\]).*";
+    public boolean containsSpecialCharacter (String password) {
+        result = false;
+        //The special characters required are selected based on usually accepted special characters
+        regex = ".*(?=.[-_!@#$%^&*+,:;<=>?\\\\]).*";
         Pattern pattern = Pattern.compile(regex);
         result = pattern.matcher(password).matches();
         return result;

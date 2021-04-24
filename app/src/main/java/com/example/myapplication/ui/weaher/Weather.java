@@ -47,10 +47,8 @@ public class Weather {
                         sb.append(day1_temp).append(" lämmintä, tuulee ").append(day1_wind).append(".\n");
                         x += 1;
                     }
-
                     full_weather_report = sb.toString();
                 }
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

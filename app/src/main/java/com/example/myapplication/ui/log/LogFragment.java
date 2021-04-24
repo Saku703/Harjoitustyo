@@ -30,20 +30,20 @@ public class LogFragment extends Fragment {
 
     private static TextView logtext;
 
-    private LogViewModel logViewModel;
+    //private LogViewModel logViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        logViewModel =
-                new ViewModelProvider(this).get(LogViewModel.class);
+        /*logViewModel =
+                new ViewModelProvider(this).get(LogViewModel.class);*/
         View root = inflater.inflate(R.layout.fragment_log, container, false);
         final TextView textView = root.findViewById(R.id.text_log);
-        logViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        /*logViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
-        });
+        });*/
 
         logtext = (TextView) textView.findViewById(R.id.text_log);
         Button button_log = root.findViewById(R.id.button);

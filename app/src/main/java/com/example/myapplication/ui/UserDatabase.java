@@ -7,13 +7,19 @@ import java.util.ArrayList;
 import static java.lang.Math.round;
 
 public class UserDatabase extends Activity{
-
     private String user;
     private String password;
     private String newUser;
     private String newPassword;
 
-    //initialising the static user array list
+    public UserDatabase() {
+        user = "";
+        password = "";
+        newUser = "";
+        newPassword = "";
+    }
+
+    //initialising the static user array
     public static User[] array;
     static {
         array = new User[6];
@@ -26,26 +32,32 @@ public class UserDatabase extends Activity{
 
         /*testing all of the requirements for a good password are met. they are:
         Minimum of 12 characters.
-        Must contain at least 1 number, 1 capital letter, 1 lower case letter and 1 special character. */
+        Must contain at least 1 number, 1 capital letter, 1 lower case letter and 1 special character.
+        Also testing that the username and name are of a reasonable lenght.*/
+        PasswordTester passwordTester = new PasswordTester();
         if (passLenght < passMinLenght) {
             returnStatement = String.format("Salasana on liian lyhyt, merkkjä %d/12", passLenght);
-        } else if (PasswordTester.containsNumber(newPassword) == false) {
+        } else if (passwordTester.containsNumber(newPassword) == false) {
             returnStatement = "Salasana ei sisältänyt numeroa";
-        } else if (PasswordTester.containsCapitalLetter(newPassword, passLenght) == false) {
+        } else if (passwordTester.containsCapitalLetter(newPassword, passLenght) == false) {
             returnStatement = "Salasana ei sisältänyt isoa kirjainta";
-        } else if (PasswordTester.containsSmallLetter(newPassword, passLenght) == false) {
+        } else if (passwordTester.containsSmallLetter(newPassword, passLenght) == false) {
             returnStatement = "Salasana ei sisältänyt pientä kirjainta";
-        } else if (PasswordTester.containsSpecialCharacter(newPassword) == false) {
+        } else if (passwordTester.containsSpecialCharacter(newPassword) == false) {
             returnStatement = "Salasana ei sisältänyt erikoismerkkiä";
+        } else if (newUser.length() < 8) {
+            returnStatement = "Käyttäjätunnuksen tulee olla väh. 8 merkkiä.";
+        } else if (name.length() < 3) {
+            returnStatement = "Nimen tulee olla väh. 3 merkkiä.";
         } else {
             User temp = new User(newUser, newPassword, name, age, height, weight, selectedSex);
-            JSONWriter.basicInfoJSON(newUser, newPassword, name, age, height, weight, selectedSex); //lisäys lokitietoihin
+            JSONWriter.basicInfoJSON(newUser, newPassword, name, age, height, weight, selectedSex);
             int usersCount = usersCount() - 1;
             array[usersCount] = (temp);
-            //System.out.println(array[usersCount].getUser());
-            //System.out.println(array[usersCount].getPassword());
-            //System.out.println(array[usersCount].getAge());
-            //System.out.println(array[usersCount].getSex());
+            System.out.println(array[usersCount].getUser());
+            System.out.println(array[usersCount].getPassword());
+            System.out.println(array[usersCount].getAge());
+            System.out.println(array[usersCount].getSex());
             System.out.println("käyttäjiä" + usersCount);
             returnStatement = "Tili luotu. Kirjaudu sisään.";
         }
@@ -63,19 +75,6 @@ public class UserDatabase extends Activity{
         } else {
             returnStatement = "Sähköposti tai salasana on väärä.";
         }
-
-        /*
-        for (i = 0; i < array.length; i++) {
-            if ((email.equals(array[i].getEmail()) == true) && (password.equals(array[i].getPassword()) == true)) {
-                //loginInfo.setText("Olet kirjautunut sisään.");
-                returnStatement = "Olet kirjautunut sisään!";
-            } else if ((i == (array.length - 1)) && (email.equals(array[i].getEmail()) == false) && (password.equals(array[i].getPassword()) == false)) {
-                //loginInfo.setText("Sähköposti tai salasana on väärä.");
-                returnStatement = "Sähköposti tai salasana on väärä.";
-                //((email.equals(array[i].getEmail()) == false) && (password.equals(array[i].getPassword()) == false))
-            }
-        } */
-
         return returnStatement;
     }
 
@@ -97,9 +96,9 @@ public class UserDatabase extends Activity{
 
         String sex = array[index].getSex();
         double dailyCalories = 0;
-        double dailyProtein = 0;
+        double dailyProtein;
 
-        //Calorine goal formula is Harris-Benedict BMR - link below
+        //Calorie goal formula is Harris-Benedict BMR - link below
         //https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation
         if (sex.equals("nainen") == true) {
             dailyCalories = 655 + (9.563 * array[index].getWeight()) + (1.850 * array[index].getHeight()) - (4.676 * array[index].getAge());
@@ -107,11 +106,10 @@ public class UserDatabase extends Activity{
             dailyCalories = 66.5 + (13.75 * array[index].getWeight()) + (5.003 * array[index].getHeight()) - (6.755 * array[index].getAge());
         }
 
-        /*The daily protein intake is calculated as a percentage of daily calorine goal.
-        The percentages are based on Harvard nutrition guidelines.
+        /*The daily protein intake is calculated as a percentage of daily calorie goal.
+        The percentages are based on Harvard nutrition guidelines: 20 % for muscle build, 10 % for regualr people.
         https://www.health.harvard.edu/nutrition/when-it-comes-to-protein-how-much-is-too-much
         */
-
         dailyProtein = (dailyCalories * activityFactor) / 4; //one gram of protein is 4 kcal
         dailyProtein = round(dailyProtein);
         strGoal = Double.toString(dailyProtein);
@@ -138,7 +136,6 @@ public class UserDatabase extends Activity{
         } else if (isArrayEmpty() == false) {
             returnStatement = false;
         }
-
         return returnStatement;
     }
 }
