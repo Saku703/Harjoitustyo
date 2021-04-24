@@ -4,6 +4,8 @@ import android.app.Activity;
 
 import java.util.ArrayList;
 
+import static java.lang.Math.round;
+
 public class UserDatabase extends Activity{
 
     private String user;
@@ -19,7 +21,6 @@ public class UserDatabase extends Activity{
 
     public static String createUser(String newUser, String newPassword, String name, int age, int height, int weight, String selectedSex) {
         String returnStatement = "";
-        int usersCount = 0;
         int passMinLenght = 12; //minimum lenght given in the final project instructions
         int passLenght = newPassword.length();
 
@@ -39,13 +40,14 @@ public class UserDatabase extends Activity{
         } else {
             User temp = new User(newUser, newPassword, name, age, height, weight, selectedSex);
             JSONWriter.basicInfoJSON(newUser, newPassword, name, age, height, weight, selectedSex); //lisäys lokitietoihin
+            int usersCount = usersCount() - 1;
             array[usersCount] = (temp);
-            System.out.println(array[usersCount].getUser());
-            System.out.println(array[usersCount].getPassword());
-            System.out.println(array[usersCount].getAge());
-            System.out.println(array[usersCount].getSex());
+            //System.out.println(array[usersCount].getUser());
+            //System.out.println(array[usersCount].getPassword());
+            //System.out.println(array[usersCount].getAge());
+            //System.out.println(array[usersCount].getSex());
+            System.out.println("käyttäjiä" + usersCount);
             returnStatement = "Tili luotu. Kirjaudu sisään.";
-            //log call
         }
         return returnStatement;
     }
@@ -89,13 +91,13 @@ public class UserDatabase extends Activity{
         return empty;
     }
 
-    public static String dailyProteinGoal () {
-        String str = "";
-        int index = 0;
+    public static String userDailyProteinGoal (double activityFactor) {
+        String strGoal = "";
+        int index = 0; //there can only be one user, index is always 0
 
         String sex = array[index].getSex();
         double dailyCalories = 0;
-        int dailyProtein = 0;
+        double dailyProtein = 0;
 
         //Calorine goal formula is Harris-Benedict BMR - link below
         //https://en.wikipedia.org/wiki/Harris%E2%80%93Benedict_equation
@@ -105,11 +107,39 @@ public class UserDatabase extends Activity{
             dailyCalories = 66.5 + (13.75 * array[index].getWeight()) + (5.003 * array[index].getHeight()) - (6.755 * array[index].getAge());
         }
 
-        //The daily protein intake is calculated utilising BMI and user's age, weight and height
-        //basal metabolism rate
+        /*The daily protein intake is calculated as a percentage of daily calorine goal.
+        The percentages are based on Harvard nutrition guidelines.
+        https://www.health.harvard.edu/nutrition/when-it-comes-to-protein-how-much-is-too-much
+        */
 
+        dailyProtein = (dailyCalories * activityFactor) / 4; //one gram of protein is 4 kcal
+        dailyProtein = round(dailyProtein);
+        strGoal = Double.toString(dailyProtein);
 
-        return str;
+        return strGoal;
+    }
+
+    public static int usersCount () {
+        int x = 0;
+        x++;
+        return x;
+    }
+
+    public static String getUserName() {
+        String userName = array[0].getName();
+        return userName;
+    }
+
+    public static boolean isUserArrayEmpty() {
+        boolean returnStatement = true;
+
+        if (isArrayEmpty() == true) {
+            returnStatement = true;
+        } else if (isArrayEmpty() == false) {
+            returnStatement = false;
+        }
+
+        return returnStatement;
     }
 }
 

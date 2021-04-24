@@ -108,6 +108,8 @@ public class OpeningFragment extends Fragment {
                 String printToUser = "";
                 printToUser = UserDatabase.logIn(user.getText().toString(), password.getText().toString());
                 welcome.setText(printToUser);
+
+
                 //usernameInHeader.setText("moi");
                 //NavHeaderMain.changeUsername();
             }

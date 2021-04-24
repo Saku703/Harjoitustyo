@@ -39,9 +39,9 @@ public class ProteinCalculator {
         System.out.println(protein);
 
         protein = round(protein);
-        String str = Double.toString(protein);
+        String strConsumed = Double.toString(protein);
 
-        return str;
+        return strConsumed;
     }
 
 

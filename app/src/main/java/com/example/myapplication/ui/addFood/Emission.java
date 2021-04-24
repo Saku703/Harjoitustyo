@@ -80,30 +80,4 @@ public class Emission {
             }
         } return co2_value;
     }
-
-    public String getConsumedProtein(int value, String food_choice) {
-
-        if(0 <= value && value <= 200) {
-            if (food_choice == "Nauta") {
-                arrayIndex = 0;
-                consumedProtein = ProteinCalculator.countConsumedProtein(value, arrayIndex);
-            } else if (food_choice == "Kala") {
-                arrayIndex = 1;
-                consumedProtein = ProteinCalculator.countConsumedProtein(value, arrayIndex);
-            } else if (food_choice == "Porsas") {
-                arrayIndex = 2;
-                consumedProtein = ProteinCalculator.countConsumedProtein(value, arrayIndex);
-            } else if (food_choice == "Kana") {
-                arrayIndex = 3;
-                consumedProtein = ProteinCalculator.countConsumedProtein(value, arrayIndex);
-            } else if (food_choice == "Juusto") {
-                arrayIndex = 4;
-                consumedProtein = ProteinCalculator.countConsumedProtein(value, arrayIndex);
-            } else if (food_choice == "Riisi") {
-                arrayIndex = 5;
-                consumedProtein = ProteinCalculator.countConsumedProtein(value, arrayIndex);
-            }
-        }
-        return consumedProtein;
-    }
 }
