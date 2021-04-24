@@ -13,7 +13,8 @@ public class ProteinCalculator {
     public static void populateArray () {
         /*Source for protein amounts is Fineli, which is Finland's national database for foods and their
         nutritional information. The database is provided by THL (Finnish Institute sor Health and Welfare).
-        The amount of protein is per 1g to make it convenient for further calculations. */
+        The amount of protein is per 1g to make it convenient for further calculations.
+        https://fineli.fi/fineli/fi/index*/
         Protein temp1 = new Protein("beef", 0.169);
         Protein temp2 = new Protein("fish", 0.189);
         Protein temp3 = new Protein("pork", 0.189);
