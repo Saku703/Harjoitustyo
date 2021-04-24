@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 
 import com.example.myapplication.R;
 import com.google.android.material.navigation.NavigationView;
@@ -18,27 +19,36 @@ import com.google.android.material.navigation.NavigationView;
 public class NavHeaderMain {
 
     //navigation bar header
-    public static TextView usernameInHeader;
+    public TextView usernameInHeader;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         /*openingViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class); */
         View root = inflater.inflate(R.layout.nav_header_main, container, false);
-        //NavigationView navigationView = (NavigationView) findViewById(R.id.nav_header_main);
-        //View headerView = navigationView.getHeaderView(0);
+        /* NavigationView root = (NavigationView) inflater.inflate(R.layout.nav_header_main, container, false);
+        View headerView = root.getHeaderView(0);
+        usernameInHeader = (TextView) headerView.findViewById(R.id.textView_navigationHeader);
+        usernameInHeader.setText("noora"); */
+
+        //usernameInHeader = (TextView) root.findViewById(R.id.textView_navigationHeader);
+        //usernameInHeader.setText("noora");
+        //NavigationView navigationView = (NavigationView) root.findViewById(R.id.nav_header_main);
+        //View headerView = root.getHeaderView(0);
         //final TextView textView = root.findViewById(R.id.text_opening);
 
+        //mDrawerTogle = new ActionBarDrawerToggle()
 
-        usernameInHeader = (TextView) root.findViewById(R.id.textView_navigationHeader);
+
+        //usernameInHeader = (TextView) root.findViewById(R.id.textView_navigationHeader);
 
 
 
         return root;
     }
 
-    public static void changeUsername() {
-        usernameInHeader.setText("moi");
+    public void changeUsername() {
+        usernameInHeader.setText("noora");
     }
 }
 

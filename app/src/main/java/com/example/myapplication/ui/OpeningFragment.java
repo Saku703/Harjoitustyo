@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.weaher.WeatherViewModel;
+import com.google.android.material.navigation.NavigationView;
 
 public class OpeningFragment extends Fragment {
 
@@ -108,7 +109,7 @@ public class OpeningFragment extends Fragment {
                 printToUser = UserDatabase.logIn(user.getText().toString(), password.getText().toString());
                 welcome.setText(printToUser);
                 //usernameInHeader.setText("moi");
-               // NavHeaderMain.changeUsername();
+                //NavHeaderMain.changeUsername();
             }
         });
 
