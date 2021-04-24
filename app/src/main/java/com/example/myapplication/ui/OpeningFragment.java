@@ -2,6 +2,8 @@ package com.example.myapplication.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,8 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,6 +32,7 @@ public class OpeningFragment extends Fragment {
     private EditText user;
     private EditText password;
     private Button logIn;
+    private CheckBox showPassword_logIn;
 
     //create account
     private EditText newUser;
@@ -39,6 +44,7 @@ public class OpeningFragment extends Fragment {
     private EditText height;
     private EditText weight;
     private Spinner chooseSex;
+    private CheckBox showPassword_createAccount;
 
     //navigation bar header
     //public TextView usernameInHeader;
@@ -54,6 +60,7 @@ public class OpeningFragment extends Fragment {
         user = (EditText) root.findViewById(R.id.userLogin_opening);
         password = (EditText) root.findViewById(R.id.passwordLogin_opening);
         logIn = (Button) root.findViewById(R.id.button1_opening);
+        showPassword_logIn = (CheckBox) root.findViewById(R.id.showPass_logIn);
 
         newUser = (EditText) root.findViewById(R.id.userCreateAccount_opening);
         newPassword = (EditText) root.findViewById(R.id.passwordCreateAccount_opening);
@@ -64,6 +71,7 @@ public class OpeningFragment extends Fragment {
         height = (EditText) root.findViewById(R.id.height_opening);
         weight = (EditText) root.findViewById(R.id.weight_opening);
         chooseSex = (Spinner) root.findViewById(R.id.spinner_opening);
+        showPassword_createAccount = (CheckBox) root.findViewById(R.id.showPass_createAccount);
 
         //usernameInHeader = (TextView) root.findViewById(R.id.textView_navigationHeader);
 
@@ -104,6 +112,28 @@ public class OpeningFragment extends Fragment {
                 welcome.setText(printToUser);
                 //usernameInHeader.setText("moi");
                // NavHeaderMain.changeUsername();
+            }
+        });
+
+        showPassword_logIn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
+
+        showPassword_createAccount.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    newPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    newPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
             }
         });
 
