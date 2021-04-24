@@ -24,12 +24,15 @@ public class WeatherFragment extends Fragment {
     private Button button_weather;
     private EditText editText_weatherInput;
     private TextView textView_cityHeader;
+    private TextView textView_weatherData;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_weather, container, false);
         textView_cityHeader = (TextView) root.findViewById(R.id.textView_cityHeader);
         textView_cityHeader.setText("Syötä kaupunki");
+        textView_weatherData = (TextView) root.findViewById(R.id.textView_weatherData);
+        textView_weatherData.setText("");
         editText_weatherInput = (EditText) root.findViewById(R.id.editText_weatherInput);
         editText_weatherInput.setText("");
         button_weather = (Button) root.findViewById(R.id.button_weather);
@@ -46,16 +49,22 @@ public class WeatherFragment extends Fragment {
                     StringBuilder builder = new StringBuilder(url);
                     CharSequence chSeq = editText_weatherInput.getText().toString();
                     builder.append(chSeq);
+                    //System.out.println(builder);
                     new AsyncHttpClient().get(builder.toString(), new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                             String str = new String(responseBody);
-                            Weather.getWeather(str);
+                            String full_weather_report = Weather.getWeather(str);
+                            if (full_weather_report == "") {
+                                textView_weatherData.setText("Säätietoja ei saatavilla paikkaan "+ editText_weatherInput.getText().toString() +". Tarkista syötteesi.");
+                            } else {
+                                textView_weatherData.setText(full_weather_report);
+                            }
                         }
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                            textView_cityHeader.setText("Tietojen haku epäonnistui");
+                            textView_weatherData.setText("Säätietoja ei ole juuri nyt saatavilla hakemaasi paikkaan");
                         }
                     });
                 }
