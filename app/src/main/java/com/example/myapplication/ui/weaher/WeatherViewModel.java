@@ -1,14 +1,14 @@
-package com.example.myapplication.ui.home;
+package com.example.myapplication.ui.weaher;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class WeatherViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public WeatherViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("Tämä on kotinäkymä");
     }

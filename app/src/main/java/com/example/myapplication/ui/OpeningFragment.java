@@ -1,14 +1,11 @@
 package com.example.myapplication.ui;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -21,11 +18,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.home.HomeViewModel;
+import com.example.myapplication.ui.weaher.WeatherViewModel;
 
 public class OpeningFragment extends Fragment {
 
-    private HomeViewModel openingViewModel;
+    private WeatherViewModel openingViewModel;
 
     //log in
     private TextView welcome;

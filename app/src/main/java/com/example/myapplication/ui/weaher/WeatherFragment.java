@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.home;
+package com.example.myapplication.ui.weaher;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,7 +18,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import cz.msebera.android.httpclient.Header;
 
-public class HomeFragment extends Fragment {
+public class WeatherFragment extends Fragment {
 
     //private HomeViewModel homeViewModel;
     private Button button_weather;
@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_weather, container, false);
         textView_cityHeader = (TextView) root.findViewById(R.id.textView_cityHeader);
         textView_cityHeader.setText("Syötä kaupunki");
         editText_weatherInput = (EditText) root.findViewById(R.id.editText_weatherInput);

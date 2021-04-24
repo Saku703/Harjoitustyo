@@ -7,9 +7,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_addFood">addFood</string>
-    <string name="menu_log">Log</string>
+    <string name="menu_weather">Sää</string>
+    <string name="menu_addFood">Päästölaskuri</string>
+    <string name="menu_log">Loki</string>
+    <string name="menu_logIn">Kirjaudu sisään</string>
 
     <string-array name="chooseSex">
         <item>mies</item>
