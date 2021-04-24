@@ -14,19 +14,19 @@
     <fragment
         android:id="@+id/nav_addFood"
         android:name="com.example.myapplication.ui.addFood.AddFoodFragment"
-        android:label="Päästölaskuri"
+        android:label="@string/menu_addFood"
         tools:layout="@layout/fragment_addfood" />
 
     <fragment
         android:id="@+id/nav_log"
         android:name="com.example.myapplication.ui.log.LogFragment"
-        android:label="Lokitiedot"
+        android:label="@string/menu_log"
         tools:layout="@layout/fragment_log" />
 
     <fragment
         android:id="@+id/nav_opening"
         android:name="com.example.myapplication.ui.OpeningFragment"
-        android:label="Kirjaudu sisään"
+        android:label="@string/menu_logIn"
         tools:layout="@layout/fragment_opening" />
 
 </navigation>
