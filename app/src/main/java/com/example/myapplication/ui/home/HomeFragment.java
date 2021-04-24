@@ -66,49 +66,7 @@ public class HomeFragment extends Fragment {
                 //readXML(v);
             }
         });
-        String url = "https://goweather.herokuapp.com/weather/Helsinki";
 
-        new AsyncHttpClient().get(url, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                String str = new String(responseBody);
-                //System.out.println(str);
-                if(str != null) {
-                    try {
-                        //JSONArray jsonArray = new JSONArray(str);
-                        //for (int i=0; i < jsonArray.length(); i++) {
-                        //JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        JSONObject jsonObject = new JSONObject(str);
-                        String all = jsonObject.toString();
-                        System.out.println(all);
-                            //System.out.println(i);
-                        String[] tokensAll = all.split(",");
-                        System.out.println(tokensAll[0]);
-                        //String totalString = tokensAll[4];
-                        String[] temperature1 = tokensAll[0].split(":");
-                        System.out.println(temperature1[1]);
-                        //String total = tokensTotal[1];
-                        String weather = temperature1[1];
-                        weather = weather.substring(1, weather.length() - 1);
-                        System.out.println(weather);
-                        //Float co2_value = Float.parseFloat(total);
-                        //System.out.println(co2_value);
-                        //System.out.println(all.split(","));
-                        //System.out.println(jsonObject.getString("temperature"));
-                        } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                /*} catch (JSONException e) {
-                        e.printStackTrace();
-                    }*/
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                System.out.println("Epäonnistui");
-            }
-        });
         return root;
     }
 
