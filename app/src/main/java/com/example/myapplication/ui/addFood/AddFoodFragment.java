@@ -48,9 +48,10 @@ public class AddFoodFragment extends Fragment {
     private TextView textview_CO2;
     //private TextView textview_Header;
     private TextView textView_proteinGoal;
-    private float averageCO2Value;
+    private String averageCO2Value;
     private CheckBox activityLevel;
     private TextView infoForUserX;
+    private static TextView infoAverageCO2;
 
     private TextView textView_protein;
 
@@ -95,6 +96,7 @@ public class AddFoodFragment extends Fragment {
         textView_proteinGoal = (TextView) root.findViewById(R.id.textView_proteinGoal);
         activityLevel = (CheckBox) root.findViewById(R.id.checkBox_activityLevel);
         infoForUserX = (TextView) root.findViewById(R.id.textView_infoForUserX);
+        infoAverageCO2 = (TextView) root.findViewById(R.id.textView_finnishAverage);
         //ProteinCalculator.populateArray();
 
         button_API = (Button) root.findViewById(R.id.button_API);
@@ -117,6 +119,7 @@ public class AddFoodFragment extends Fragment {
         StrictMode.setThreadPolicy(policy);
         AverageCO2 avg = new AverageCO2();
         averageCO2Value = avg.getAverageCO2();
+        infoAverageCO2.setText("Suomalaisen keskiarvo " + averageCO2Value + " kg / vuosi");
         return root;
     }
 
@@ -193,9 +196,4 @@ public class AddFoodFragment extends Fragment {
             });
         }
     }
-
-    public void userSpecificInfo () {
-
-    }
-
 }
