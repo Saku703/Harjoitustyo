@@ -87,22 +87,24 @@
         android:id="@+id/textView_CO2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="348dp"
+        android:layout_marginBottom="340dp"
         android:text="Syötä ruoka "
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_CO2_info"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView_CO2_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="388dp"
         android:text="Vuosittainen ko. proteiinin hiilijalanjälkesi [kg]"
         android:textColor="#F44336"
-        app:layout_constraintBottom_toTopOf="@+id/textView_CO2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -117,13 +119,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_protein_info"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView_protein_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="28dp"
         android:text="Syöty proteiinimäärä [g]"
         android:textColor="#4CAF50"
         app:layout_constraintEnd_toEndOf="parent"
@@ -203,8 +205,11 @@
         android:id="@+id/textView_finnishAverage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textView_CO2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_CO2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_CO2_info"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -120,7 +120,7 @@ public class AddFoodFragment extends Fragment {
         StrictMode.setThreadPolicy(policy);
         AverageCO2 avg = new AverageCO2();
         averageCO2Value = avg.getAverageCO2();
-        infoAverageCO2.setText("Suomalaisen keskiarvo " + averageCO2Value + " kg / vuosi");
+        infoAverageCO2.setText("(Suomalaisen keskiarvo " + averageCO2Value + " kg / vuosi)");
         return root;
     }
 
