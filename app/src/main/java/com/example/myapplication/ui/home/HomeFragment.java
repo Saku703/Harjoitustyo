@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
         button_weather.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 if (PasswordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
                 } else if (PasswordTester.containsSpecialCharacter(editText_weatherInput.getText().toString()) == true) {
@@ -60,6 +61,14 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
+=======
+                //AddFood food = new AddFood();
+                //food.readXML();
+                //readXML(v);
+            }
+        });
+
+>>>>>>> Noora6
         return root;
     }
 }
