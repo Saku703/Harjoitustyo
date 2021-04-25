@@ -35,7 +35,7 @@ public class JSONWriter {
         context = getContext.getContextForFile(context);
         try {
             ins = context.openFileInput("jsonFile");
-        } catch (FileNotFoundException e) {
+        } catch (NullPointerException | FileNotFoundException e) {
             System.out.println("Ei valmiita lokitietoja.\n");
             e.printStackTrace();
         }
