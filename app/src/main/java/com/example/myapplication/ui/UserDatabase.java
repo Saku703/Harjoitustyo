@@ -72,47 +72,51 @@ public class UserDatabase extends Activity{
         context = getContext.getContextForFile(context);
         try {
             ins = context.openFileInput("jsonFile");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(ins));
+            BufferedReader br = new BufferedReader(new InputStreamReader(ins));
 
-        try {
-            //Getting the needed data from log
-            String fld = br.readLine();  //fld = full log data
-            JSONObject log = new JSONObject(fld);
-            JSONArray user_data = log.getJSONArray("user_info");
-            String log_line_one = String.valueOf((user_data.getJSONObject(0)));
-            JSONObject first_line = new JSONObject(log_line_one);
-            String userFromLog = first_line.getString("user_user");
-            String passwordFromLog = first_line.getString("user_password");
+            try {
+                //Getting the needed data from log
+                String fld = br.readLine();  //fld = full log data
+                JSONObject log = new JSONObject(fld);
+                JSONArray user_data = log.getJSONArray("user_info");
+                String log_line_one = String.valueOf((user_data.getJSONObject(0)));
+                JSONObject first_line = new JSONObject(log_line_one);
+                String userFromLog = first_line.getString("user_user");
+                String passwordFromLog = first_line.getString("user_password");
 
-            if (log.isNull("user_info")) {
-                returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
-            } else if ((user.equals(userFromLog) == true) && (password.equals(passwordFromLog))) {
-                String nameFromLog = first_line.getString("user_name");
+                if (log.isNull("user_info")) {
+                    returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
+                } else if ((user.equals(userFromLog) == true) && (password.equals(passwordFromLog))) {
+                    String nameFromLog = first_line.getString("user_name");
 
-                //Parsing the user info from log to add to the user array.
-                //User array is static and used for specific app run to perform calculations.
-                int ageFromLog = first_line.getInt("user_age");
-                int heightFromLog = first_line.getInt("user_height");
-                int weightFromLog = first_line.getInt("user_weight");
-                String sexFromLog = first_line.getString("user_sex");
+                    //Parsing the user info from log to add to the user array.
+                    //User array is static and used for specific app run to perform calculations.
+                    int ageFromLog = first_line.getInt("user_age");
+                    int heightFromLog = first_line.getInt("user_height");
+                    int weightFromLog = first_line.getInt("user_weight");
+                    String sexFromLog = first_line.getString("user_sex");
 
-                User temp = new User(userFromLog, passwordFromLog, nameFromLog, ageFromLog,
-                        heightFromLog, weightFromLog, sexFromLog);
-                int usersCount = usersCount() - 1;
-                array[usersCount] = (temp);
-                returnStatement = "Olet kirjautunut sisään!";
-            } else {
-                returnStatement = "Sähköposti tai salasana on väärä.";
+                    User temp = new User(userFromLog, passwordFromLog, nameFromLog, ageFromLog,
+                            heightFromLog, weightFromLog, sexFromLog);
+                    int usersCount = usersCount() - 1;
+                    array[usersCount] = (temp);
+                    returnStatement = "Olet kirjautunut sisään!";
+                } else {
+                    returnStatement = "Sähköposti tai salasana on väärä.";
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (JSONException e) {   
-            e.printStackTrace();
-        } catch (IOException e) {
+
+        } catch (FileNotFoundException e) {
+            returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
             e.printStackTrace();
         }
+
+
 
         return returnStatement;
     }
