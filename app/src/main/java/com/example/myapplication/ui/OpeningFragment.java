@@ -13,16 +13,11 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import com.example.myapplication.R;
-import com.example.myapplication.ui.weaher.WeatherViewModel;
 
 public class OpeningFragment extends Fragment {
-
-    private WeatherViewModel openingViewModel;
 
     //log in
     private TextView welcome;

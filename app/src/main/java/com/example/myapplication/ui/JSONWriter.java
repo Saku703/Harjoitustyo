@@ -1,14 +1,11 @@
 package com.example.myapplication.ui;
 
 import android.content.Context;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -18,13 +15,10 @@ public class JSONWriter {
 
     //public static Context context = null;
     private static Context context = null;
-
-
     public static JSONObject log = new JSONObject();
 
     //private static JSONObject log = new JSONObject();
     private static JSONObject beginning_log = new JSONObject();
-
     private static JSONArray basic_list = new JSONArray();
     private static JSONArray beginning_basic_list = new JSONArray();
     private static JSONArray ingredient_list = new JSONArray();
@@ -39,7 +33,6 @@ public class JSONWriter {
             try {
                 String fld = br.readLine();  //fld = full log data
                 beginning_log = new JSONObject(fld);
-                System.out.println(beginning_log.toString());
 
                 if (beginning_log.isNull("user_info")){
                     System.out.println("Ei valmiita käyttäjätietoja.\n");
@@ -73,7 +66,6 @@ public class JSONWriter {
                 e.printStackTrace();
             }
         } catch (NullPointerException | FileNotFoundException e) {
-            System.out.println("Ei valmiita lokitietoja.\n");
             e.printStackTrace();
         }
     }
@@ -112,9 +104,7 @@ public class JSONWriter {
             ingredient.put("food_item", food_type);
             ingredient.put("food_amount", amount_of_food);
             ingredient_list.put(ingredient);
-            System.out.println(log.toString());
             log.put("log_data", ingredient_list);
-            System.out.println(log.toString());
             //write to file
             context = getContext.getContextForFile(context);
             OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput("jsonFile", Context.MODE_PRIVATE));

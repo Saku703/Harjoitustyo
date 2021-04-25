@@ -4,8 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-//import static com.example.myapplication.ui.JSONWriter.log;
-
 public class Weather {
 
     static String full_weather_report;
@@ -19,9 +17,7 @@ public class Weather {
             try {
                 JSONObject fwi = new JSONObject(str); //fwi = full_weather_info
                 String all = fwi.toString();
-                System.out.println(all);
                 String day0_temp = fwi.getString("temperature");
-                // Check if there is any weather data
                 if(day0_temp.equals("") == true){
                     full_weather_report = "";
                 } else {

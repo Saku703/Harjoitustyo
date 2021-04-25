@@ -7,20 +7,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import com.example.myapplication.R;
 import com.example.myapplication.ui.PasswordTester;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-
 import cz.msebera.android.httpclient.Header;
 
 public class WeatherFragment extends Fragment {
 
-    //private HomeViewModel homeViewModel;
     private Button button_weather;
     private EditText editText_weatherInput;
     private TextView textView_cityHeader;
@@ -44,7 +40,7 @@ public class WeatherFragment extends Fragment {
             public void onClick(View v) {
                 //Utilising the passwordtester again with city names: reusing excisting code.
                 PasswordTester passwordTester = new PasswordTester();
-                //Check if users input is 
+                //Check if users input is suitable for city
                 if (passwordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
                 } else if (passwordTester.containsSpecialCharacter(editText_weatherInput.getText().toString()) == true) {
@@ -56,7 +52,6 @@ public class WeatherFragment extends Fragment {
                     counter++;
                     //tähän json call
                     builder.append(chSeq);
-                    //System.out.println(builder);
                     new AsyncHttpClient().get(builder.toString(), new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

@@ -3,12 +3,6 @@ package com.example.myapplication.ui.addFood;
 import com.example.myapplication.ui.JSONWriter;
 import com.example.myapplication.ui.ProteinCalculator;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 public class ConsumedProtein {
     int arrayIndex;
     String consumedProtein;
@@ -19,7 +13,8 @@ public class ConsumedProtein {
     }
 
     public String getConsumedProtein(int value, String food_choice) {
-
+        //Calling the protein calculator -method based on the selected food.
+        //Consumed protein amount is returned as a String.
         if(0 <= value && value <= 200) {
             JSONWriter.updateJSON(value, food_choice);
             if (food_choice == "Nauta") {

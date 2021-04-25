@@ -2,8 +2,6 @@ package com.example.myapplication.ui.addFood;
 
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,32 +12,14 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import com.example.myapplication.R;
-import com.example.myapplication.ui.JSONWriter;
-import com.example.myapplication.ui.ProteinCalculator;
-import com.example.myapplication.ui.User;
 import com.example.myapplication.ui.UserDatabase;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public class AddFoodFragment extends Fragment {
-
-    //private AddFoodViewModel addFoodViewModel;
-    //private TextView textview_Header;
 
     //Collecting user input
     private TextView textView_Food;
@@ -62,16 +42,8 @@ public class AddFoodFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        /*addFoodViewModel =
-                new ViewModelProvider(this).get(AddFoodViewModel.class);*/
         View root = inflater.inflate(R.layout.fragment_addfood, container, false);
-        //final TextView textView = root.findViewById(R.id.text_addFood);
-        /*addFoodViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });*/
+
         textView_Food = (TextView) root.findViewById(R.id.textView_Food);
         textView_Food.setText("Valitse ruoka");
         spinner_Foods = (Spinner) root.findViewById(R.id.spinner_Foods);
@@ -91,8 +63,6 @@ public class AddFoodFragment extends Fragment {
         userInputProtein = (EditText) root.findViewById(R.id.userInputProtein);
         textview_CO2 = (TextView) root.findViewById(R.id.textView_CO2);
         infoAverageCO2 = (TextView) root.findViewById(R.id.textView_finnishAverage);
-        //textview_Header = (TextView) root.findViewById(R.id.textView_Header);
-        //textview_Header.setText("Tarkista ympäristöystävällisin (proteiinin) lähde!");
         infoForUserX = (TextView) root.findViewById(R.id.textView_infoForUserX);
         textView_protein = (TextView) root.findViewById(R.id.textView_protein);
         textView_proteinGoal = (TextView) root.findViewById(R.id.textView_proteinGoal);
@@ -103,7 +73,7 @@ public class AddFoodFragment extends Fragment {
         button_API.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readXML(v);
+                printEmissionsInfo(v);
             }
         });
 
@@ -116,6 +86,7 @@ public class AddFoodFragment extends Fragment {
             }
         });
 
+        //Calculating the annual CO2-emission per year
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         AverageCO2 avg = new AverageCO2();
@@ -124,7 +95,7 @@ public class AddFoodFragment extends Fragment {
         return root;
     }
 
-    public void readXML(View v) {
+    public void printEmissionsInfo(View v) {
 
         int intFromUser = Integer.parseInt(userInputAPI.getText().toString());
         String selected_Food = spinner_Foods.getSelectedItem().toString();

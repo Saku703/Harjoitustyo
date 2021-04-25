@@ -1,18 +1,11 @@
 package com.example.myapplication.ui.addFood;
 
-import android.text.Editable;
-import android.widget.EditText;
-
 import com.example.myapplication.ui.JSONWriter;
-import com.example.myapplication.ui.ProteinCalculator;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import static java.lang.Math.round;
 
 public class Emission {
     String co2_value;
@@ -28,6 +21,7 @@ public class Emission {
     }
 
     public String readXML(int value, String food_choice) {
+        //Food value selected in the AddFoodFragment's spinner
         if(0 <= value && value <= 200) {
             JSONWriter.updateJSON(value, food_choice);
             this.food_value = value;
@@ -46,6 +40,7 @@ public class Emission {
             }
 
             try {
+                //http-call to the Ilmastodieetti API and parsing the response
                 String url = "https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=omnivore";
                 StringBuilder builder = new StringBuilder(url);
                 CharSequence chSeq = "&query."+ food_choice +"Level=" + value;
@@ -68,7 +63,6 @@ public class Emission {
                 String[] tokensTotal = totalString.split(":");
                 String total = tokensTotal[1];
                 total = total.substring(0, total.length() - 1).trim();
-                System.out.println(total);
                 float f = Float.parseFloat(total);
                 int b = (int) Math.round(f);
                 this.co2_value = Integer.toString(b);

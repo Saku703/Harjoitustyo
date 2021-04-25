@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static java.lang.Math.round;
-
 public class AverageCO2 {
     float averageCO2Value;
     String returnStatement;
@@ -18,6 +16,7 @@ public class AverageCO2 {
     }
 
     public String getAverageCO2() {
+        //http-call to the Ilmastodieetti API and parsing the response
         try {
             String url = "https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=omnivore&query.beefLevel=100&query.fishLevel=100&query.porkPoultryLevel=100&query.dairyLevel=100&query.cheeseLevel=100&query.riceLevel=100&query.eggLevel=100&query.winterSaladLevel=100";
 
@@ -32,7 +31,6 @@ public class AverageCO2 {
             }
             br.close();
             String outputString = response.toString();
-            System.out.println(outputString);
             String[] tokensAll = outputString.split(",");
 
             String totalString = tokensAll[4];
