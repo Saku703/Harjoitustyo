@@ -35,46 +35,45 @@ public class JSONWriter {
         context = getContext.getContextForFile(context);
         try {
             ins = context.openFileInput("jsonFile");
+            BufferedReader br = new BufferedReader(new InputStreamReader(ins));
+            try {
+                String fld = br.readLine();  //fld = full log data
+                beginning_log = new JSONObject(fld);
+                System.out.println(beginning_log.toString());
+
+                if (beginning_log.isNull("user_info")){
+                    System.out.println("Ei valmiita käyttäjätietoja.\n");
+                } else {
+                    JSONArray user_data = beginning_log.getJSONArray("user_info");
+                    String log_line_one = String.valueOf((user_data.getJSONObject(0)));
+                    JSONObject first_line = new JSONObject(log_line_one);
+                    basicInfoJSON(first_line.getString("user_user"), first_line.getString("user_password"),
+                            first_line.getString("user_name"), first_line.getInt("user_age"), first_line.getInt("user_height"),
+                            first_line.getInt("user_weight"), first_line.getString("user_sex"));
+                }
+                if (beginning_log.isNull("log_data")){
+                    System.out.println("Ei aiempia lokipäivityksiä.\n");
+                } else {
+                    JSONArray data = beginning_log.getJSONArray("log_data");
+                    int x = 0;
+                    String log_line = null;
+                    String food_info = null;
+                    int food_number = 0;
+                    while ((log_line= String.valueOf((data.getJSONObject(x)))) != null) {
+                        JSONObject obj = new JSONObject(log_line);
+                        food_info = obj.getString("food_item");
+                        food_number = obj.getInt("food_amount");
+                        updateJSON(food_number, food_info);
+                        x += 1;
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (NullPointerException | FileNotFoundException e) {
             System.out.println("Ei valmiita lokitietoja.\n");
-            e.printStackTrace();
-        }
-        BufferedReader br = new BufferedReader(new InputStreamReader(ins));
-        try {
-            String fld = br.readLine();  //fld = full log data
-            beginning_log = new JSONObject(fld);
-            System.out.println(beginning_log.toString());
-
-            if (beginning_log.isNull("user_info")){
-                System.out.println("Ei valmiita käyttäjätietoja.\n");
-            } else {
-                JSONArray user_data = beginning_log.getJSONArray("user_info");
-                String log_line_one = String.valueOf((user_data.getJSONObject(0)));
-                JSONObject first_line = new JSONObject(log_line_one);
-                basicInfoJSON(first_line.getString("user_user"), first_line.getString("user_password"),
-                        first_line.getString("user_name"), first_line.getInt("user_age"), first_line.getInt("user_height"),
-                        first_line.getInt("user_weight"), first_line.getString("user_sex"));
-            }
-            if (beginning_log.isNull("log_data")){
-                System.out.println("Ei aiempia lokipäivityksiä.\n");
-            } else {
-                JSONArray data = beginning_log.getJSONArray("log_data");
-                int x = 0;
-                String log_line = null;
-                String food_info = null;
-                int food_number = 0;
-                while ((log_line= String.valueOf((data.getJSONObject(x)))) != null) {
-                    JSONObject obj = new JSONObject(log_line);
-                    food_info = obj.getString("food_item");
-                    food_number = obj.getInt("food_amount");
-                    updateJSON(food_number, food_info);
-                    x += 1;
-                }
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
             e.printStackTrace();
         }
     }
