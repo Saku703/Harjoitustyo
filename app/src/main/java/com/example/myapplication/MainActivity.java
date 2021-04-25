@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     public Context context = null;
 
-    Context context;
+    //Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

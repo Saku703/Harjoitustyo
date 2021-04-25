@@ -44,7 +44,6 @@ public class WeatherFragment extends Fragment {
                 //Utilising the passwordtester again with city names: reusing excisting code.
                 PasswordTester passwordTester = new PasswordTester();
 
-                if (passwordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                 //Check if users input is 
                 if (passwordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");

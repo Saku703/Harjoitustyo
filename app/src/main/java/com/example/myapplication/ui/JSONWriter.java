@@ -14,7 +14,7 @@ public class JSONWriter {
 
     public static Context context = null;
 
-    private static JSONObject log = new JSONObject();
+    public static JSONObject log = new JSONObject();
     private static JSONArray basic_list = new JSONArray();
     private static JSONArray ingredient_list = new JSONArray();
 
