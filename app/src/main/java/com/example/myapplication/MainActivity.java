@@ -6,10 +6,12 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 
+import com.example.myapplication.ui.JSONWriter;
 import com.example.myapplication.ui.OpeningFragment;
 import com.example.myapplication.ui.ProteinCalculator;
 import com.example.myapplication.ui.addFood.AddFoodFragment;
 import com.example.myapplication.ui.addFood.AverageCO2;
+import com.example.myapplication.ui.getContext;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -34,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     public Context context = null;
 
-    //Context context;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         ProteinCalculator.populateArray();
-        context = MainActivity.this;
 
         context = MainActivity.this;
+        context = getContext.getContextForFile(context);
+
+        JSONWriter.fileTester();
 
         /*
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

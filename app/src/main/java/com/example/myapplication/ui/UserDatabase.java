@@ -1,12 +1,25 @@
 package com.example.myapplication.ui;
 
 import android.app.Activity;
+import android.content.Context;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import static java.lang.Math.round;
 
 public class UserDatabase extends Activity{
+
+    static Context context = null;
+
     private String user;
     private String password;
     private String newUser;
@@ -67,14 +80,43 @@ public class UserDatabase extends Activity{
     public static String logIn(String user, String password) {
         String returnStatement = "";
         int i = 0;
-
-        if (isArrayEmpty() == true) {
-            returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
-        } else if ((user.equals(array[i].getUser()) == true) && (password.equals(array[i].getPassword()) == true)) {
-            returnStatement = "Olet kirjautunut sisään!";
-        } else {
-            returnStatement = "Sähköposti tai salasana on väärä.";
+        InputStream ins = null;
+        context = getContext.getContextForFile(context);
+        try {
+            ins = context.openFileInput("jsonFile");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(ins));
+
+        try {
+            String fld = br.readLine();  //fld = full log data
+            JSONObject log = new JSONObject(fld);
+            JSONArray user_data = log.getJSONArray("user_info");
+            String log_line_one = String.valueOf((user_data.getJSONObject(0)));
+            JSONObject first_line = new JSONObject(log_line_one);
+            String userFromLog = first_line.getString("user_user");
+            String passwordFromLog = first_line.getString("user_password");
+
+            if (log.isNull("user_info")) {
+                returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
+            } else if ((user.equals(userFromLog) == true) && (password.equals(passwordFromLog))) {
+                returnStatement = "Olet kirjautunut sisään!";
+                String nameFromLog = first_line.getString("user_name");
+                int ageFromLog = first_line.getInt("user_age");
+                int heightFromLog = first_line.getInt("user_height");
+                int weightFromLog = first_line.getInt("user_weight");
+                String sexFromLog = first_line.getString("user_sex");
+            } else {
+                returnStatement = "Sähköposti tai salasana on väärä.";
+            }
+        } catch (JSONException e) {   
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return returnStatement;
     }
 
