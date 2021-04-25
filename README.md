@@ -1,4 +1,4 @@
-# Harjoitustyo - ViherBulkkari
+# ViherBulkkari
 
 Welcome to our GitHub repo! 
 
