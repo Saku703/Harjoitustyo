@@ -25,6 +25,7 @@ public class WeatherFragment extends Fragment {
     private EditText editText_weatherInput;
     private TextView textView_cityHeader;
     private TextView textView_weatherData;
+    private int counter = 0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,7 +44,7 @@ public class WeatherFragment extends Fragment {
             public void onClick(View v) {
                 //Utilising the passwordtester again with city names: reusing excisting code.
                 PasswordTester passwordTester = new PasswordTester();
-
+                counter++;
                 //Check if users input is 
                 if (passwordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
