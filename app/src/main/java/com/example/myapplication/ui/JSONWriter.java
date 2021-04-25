@@ -124,5 +124,4 @@ public class JSONWriter {
             e.printStackTrace();
         }
     }
-
 }
