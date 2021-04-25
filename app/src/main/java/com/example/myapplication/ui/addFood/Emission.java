@@ -11,13 +11,11 @@ public class Emission {
     String co2_value;
     int food_value;
     int arrayIndex;
-    String consumedProtein;
 
     public Emission() {
         co2_value = "";
         food_value = 0;
         arrayIndex = 0;
-        consumedProtein = "";
     }
 
     public String readXML(int value, String food_choice) {
