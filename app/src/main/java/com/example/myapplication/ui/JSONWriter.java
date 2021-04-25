@@ -57,7 +57,7 @@ public class JSONWriter {
                         food_number = obj.getInt("food_amount");
                         updateJSON(food_number, food_info);
                         x += 1;
-                    }
+                    } 
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
