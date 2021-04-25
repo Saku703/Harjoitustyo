@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -31,6 +32,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    public Context context = null;
 
     Context context;
 
@@ -52,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         ProteinCalculator.populateArray();
+        context = MainActivity.this;
+
         context = MainActivity.this;
 
         /*

@@ -4,7 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.example.myapplication.ui.JSONWriter.log;
+//import static com.example.myapplication.ui.JSONWriter.log;
 
 public class Weather {
 
