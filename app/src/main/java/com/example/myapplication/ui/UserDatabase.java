@@ -96,10 +96,14 @@ public class UserDatabase extends Activity{
             JSONArray user_data = log.getJSONArray("user_info");
             String log_line_one = String.valueOf((user_data.getJSONObject(0)));
             JSONObject first_line = new JSONObject(log_line_one);
+            String userFromLog = first_line.getString("user_user");
+            String passwordFromLog = first_line.getString("user_password");
+            
             if (log.isNull("user_info")) {
                 returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
-            } else if ((user.equals(first_line.getString("user_user")) == true) && (password.equals(first_line.getString("user_password")) == true)) {
+            } else if ((user.equals(userFromLog) == true) && (password.equals(passwordFromLog))) {
                 returnStatement = "Olet kirjautunut sisään!";
+                //tallenna logista käyttäjän tiedot muuttujiin
             } else {
                 returnStatement = "Sähköposti tai salasana on väärä.";
             }
