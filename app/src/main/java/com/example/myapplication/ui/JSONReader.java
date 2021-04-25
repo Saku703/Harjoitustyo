@@ -83,7 +83,7 @@ public class JSONReader {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        
+
         response=sb.toString();
         return response;
     }
