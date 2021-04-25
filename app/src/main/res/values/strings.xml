@@ -5,12 +5,13 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_logOut">Kirjaudu ulos</string>
 
     <string name="menu_weather">Sää</string>
     <string name="menu_addFood">Päästö- ja proteiinilaskuri</string>
     <string name="menu_log">Loki</string>
     <string name="menu_logIn">Kirjaudu sisään</string>
+    <string name="menu_logOut">Kirjaudu ulos</string>
 
     <string-array name="chooseSex">
         <item>mies</item>

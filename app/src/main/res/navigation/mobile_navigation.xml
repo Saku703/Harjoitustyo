@@ -29,4 +29,10 @@
         android:label="@string/menu_logIn"
         tools:layout="@layout/fragment_opening" />
 
+    <fragment
+        android:id="@+id/nav_logOut"
+        android:name="com.example.myapplication.ui.LogOutFragment"
+        android:label="@string/menu_logOut"
+        tools:layout="@layout/fragment_logout" />
+
 </navigation>

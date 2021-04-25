@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.lang.Math.round;
 
@@ -108,6 +109,8 @@ public class UserDatabase extends Activity{
                 int usersCount = usersCount() - 1;
                 array[usersCount] = (temp);
                 returnStatement = "Olet kirjautunut sisään!";
+                //LogOutFragment.setLogOutInfo(userFromLog);
+                System.out.println("moi");
             } else {
                 returnStatement = "Sähköposti tai salasana on väärä.";
             }
@@ -117,6 +120,17 @@ public class UserDatabase extends Activity{
             e.printStackTrace();
         }
 
+        return returnStatement;
+    }
+
+    public static String logOut () {
+        String returnStatement = "";
+        if (isArrayEmpty() == false) {
+            Arrays.fill(array, null);
+            returnStatement = "Olet kirjautunut ulos";
+        } else {
+            returnStatement = "Et ole kirjautunut sisään";
+        }
         return returnStatement;
     }
 
@@ -168,6 +182,11 @@ public class UserDatabase extends Activity{
     public static String getUserName() {
         String userName = array[0].getName();
         return userName;
+    }
+
+    public static String getUserame() {
+        String username = array[0].getUser();
+        return username;
     }
 
     public static boolean isUserArrayEmpty() {

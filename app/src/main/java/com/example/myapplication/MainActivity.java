@@ -9,6 +9,7 @@ import android.widget.Button;
 import com.example.myapplication.ui.JSONWriter;
 import com.example.myapplication.ui.OpeningFragment;
 import com.example.myapplication.ui.ProteinCalculator;
+import com.example.myapplication.ui.UserDatabase;
 import com.example.myapplication.ui.addFood.AddFoodFragment;
 import com.example.myapplication.ui.addFood.AverageCO2;
 import com.example.myapplication.ui.getContext;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_weather, R.id.nav_addFood, R.id.nav_log, R.id.nav_opening)
+                R.id.nav_weather, R.id.nav_addFood, R.id.nav_log, R.id.nav_opening, R.id.nav_logOut)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -57,16 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         context = MainActivity.this;
         context = getContext.getContextForFile(context);
-
         JSONWriter.fileTester();
-
-        /*
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
-        fragmentTransaction.add(R.id.nav_view, new OpeningFragment());
-        fragmentTransaction.commit();
-        */
-
 
     }
 
