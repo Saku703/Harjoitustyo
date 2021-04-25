@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
 
+import com.example.myapplication.ui.JSONWriter;
 import com.example.myapplication.ui.OpeningFragment;
 import com.example.myapplication.ui.ProteinCalculator;
 import com.example.myapplication.ui.addFood.AddFoodFragment;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
         context = MainActivity.this;
         context = getContext.getContextForFile(context);
+
+        JSONWriter.fileTester();
 
         /*
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

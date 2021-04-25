@@ -6,8 +6,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class JSONWriter {
@@ -18,6 +22,26 @@ public class JSONWriter {
     private static JSONObject log = new JSONObject();
     private static JSONArray basic_list = new JSONArray();
     private static JSONArray ingredient_list = new JSONArray();
+
+    public static void fileTester() {
+        InputStream ins = null;
+        context = getContext.getContextForFile(context);
+        try {
+            ins = context.openFileInput("jsonFile");
+        } catch (FileNotFoundException e) {
+            System.out.println("Ei valmiita lokitietoja.\n");
+            e.printStackTrace();
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(ins));
+        try {
+            String fld = br.readLine();  //fld = full log data
+            log = new JSONObject(fld);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public JSONWriter(Context context){
         this.context = context;
