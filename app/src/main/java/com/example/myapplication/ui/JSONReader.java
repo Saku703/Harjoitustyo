@@ -1,5 +1,6 @@
 package com.example.myapplication.ui;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
@@ -7,10 +8,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.example.myapplication.ui.JSONWriter.log;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+//import static com.example.myapplication.ui.JSONWriter.log;
 
 public class JSONReader {
+<<<<<<< HEAD
     static TextView logtext;
+=======
+
+    static Context context = null;
+
+    //static TextView logtext;
+>>>>>>> Santeri7
 
     public static String readJSON(View v){
         String json = getJSON();  //gets JSON information
@@ -22,7 +36,19 @@ public class JSONReader {
         String response = null;
         StringBuilder sb = new StringBuilder();  //creates StringBuilder sb that can be expanded
 
+        InputStream ins = null;
         try {
+            ins = context.openFileInput("jsonFile");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(ins));
+
+
+        try {
+            String fld = br.readLine();  //fld = full log data
+            JSONObject log = new JSONObject(fld);
             if (log.isNull("user_info")){
                 System.out.println("Ei käyttäjätietoja.\n");
                 sb.append("Ei käyttäjätietoja.\n");
@@ -67,10 +93,11 @@ public class JSONReader {
                 }
             }
 
-
-        } catch (JSONException e) {
+            ins.close();
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
+
 
         response=sb.toString();
         return response;
