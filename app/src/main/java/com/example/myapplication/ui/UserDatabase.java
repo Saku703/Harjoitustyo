@@ -98,7 +98,7 @@ public class UserDatabase extends Activity{
             JSONObject first_line = new JSONObject(log_line_one);
             String userFromLog = first_line.getString("user_user");
             String passwordFromLog = first_line.getString("user_password");
-            
+
             if (log.isNull("user_info")) {
                 returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
             } else if ((user.equals(userFromLog) == true) && (password.equals(passwordFromLog))) {
