@@ -1,10 +1,10 @@
 # Harjoitustyo - ViherBulkkari
 
+Welcome to our GitHub repo! 
 
-Demovideo osa 1: https://youtu.be/foxZqftmIvs
-Ensimmäisellä videolla näytetään kaikki perusasiat sovelluksesta
+Please find the documentation (in finnish, pdf) attached and application demostrations video below:
 
-Demovideo osa 2: https://youtu.be/3teb7ZzXI-Y
-Toisella videolla näytetään, miten sovellus toimii uudelleenkäynnistämisen tai uloskirjautumisen jälkeen.
-
-Demovideo on kahdessa osaa, sillä yhdistetyn videon laatu kärsi liikaa, jolloin teksteistä ei saanut riittävästi selvää.
+Demo video: https://youtu.be/Is1QELN7IaE
+- Whish functionalities are includeed
+- How the app works without logging in
+- How the app works after restarting the app
