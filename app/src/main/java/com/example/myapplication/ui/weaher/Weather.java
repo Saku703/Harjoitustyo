@@ -21,6 +21,7 @@ public class Weather {
                 String all = fwi.toString();
                 System.out.println(all);
                 String day0_temp = fwi.getString("temperature");
+                // Check if there is any weather data
                 if(day0_temp.equals("") == true){
                     full_weather_report = "";
                 } else {

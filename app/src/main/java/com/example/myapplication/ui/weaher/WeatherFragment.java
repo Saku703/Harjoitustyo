@@ -40,6 +40,7 @@ public class WeatherFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                //Check if users input is 
                 if (PasswordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
                 } else if (PasswordTester.containsSpecialCharacter(editText_weatherInput.getText().toString()) == true) {
@@ -64,7 +65,7 @@ public class WeatherFragment extends Fragment {
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                            textView_weatherData.setText("Säätietoja ei ole juuri nyt saatavilla hakemaasi paikkaan");
+                            textView_weatherData.setText("Säätietoja ei ole juuri nyt saatavilla hakemaasi paikkaan.");
                         }
                     });
                 }
