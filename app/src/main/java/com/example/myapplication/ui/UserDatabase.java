@@ -103,7 +103,11 @@ public class UserDatabase extends Activity{
                 returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
             } else if ((user.equals(userFromLog) == true) && (password.equals(passwordFromLog))) {
                 returnStatement = "Olet kirjautunut sisään!";
-                //tallenna logista käyttäjän tiedot muuttujiin
+                String nameFromLog = first_line.getString("user_name");
+                int ageFromLog = first_line.getInt("user_age");
+                int heightFromLog = first_line.getInt("user_height");
+                int weightFromLog = first_line.getInt("user_weight");
+                String sexFromLog = first_line.getString("user_sex");
             } else {
                 returnStatement = "Sähköposti tai salasana on väärä.";
             }
