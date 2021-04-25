@@ -81,6 +81,7 @@ public class JSONReader {
             }
 
         } catch (FileNotFoundException e) {
+            sb.append("Ei dataa.\n");
             e.printStackTrace();
         }
         
