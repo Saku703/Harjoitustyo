@@ -1,14 +1,22 @@
 package com.example.myapplication.ui;
 
+import android.content.Context;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 public class JSONWriter {
 
-    public static JSONObject log = new JSONObject();
-    public static JSONArray basic_list = new JSONArray();
-    public static JSONArray ingredient_list = new JSONArray();
+    public static Context context = null;
+
+    private static JSONObject log = new JSONObject();
+    private static JSONArray basic_list = new JSONArray();
+    private static JSONArray ingredient_list = new JSONArray();
 
     public static void basicInfoJSON(String user_user, String user_password, String user_name, int user_age, int user_height, int user_weight, String user_sex){
         JSONObject basic_info_variable = new JSONObject();
@@ -23,7 +31,11 @@ public class JSONWriter {
             basic_info_variable.put("user_sex", user_sex);
             basic_list.put(basic_info_variable);
             log.put("user_info", basic_list);
-        } catch (JSONException e) {
+            //writing to file
+            OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput("jsonFile", Context.MODE_PRIVATE));
+            osw.write(log.toString());
+            osw.close();
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -36,7 +48,11 @@ public class JSONWriter {
             ingredient.put("food_amount", amount_of_food);
             ingredient_list.put(ingredient);
             log.put("log_data", ingredient_list);
-        } catch (JSONException e) {
+            System.out.println(log.toString());
+            OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput("jsonFile", Context.MODE_PRIVATE));
+            osw.write(log.toString());
+            osw.close();
+        } catch (JSONException | IOException e) {
             e.printStackTrace();
         }
     }
