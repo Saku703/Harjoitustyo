@@ -48,7 +48,7 @@ public class JSONReader {
             String fld = br.readLine();  //fld = full log data
             JSONObject log = new JSONObject(fld);
             if (log.isNull("user_info")){
-                System.out.println("Ei käyttäjätietoja.\n");
+                //System.out.println("Ei käyttäjätietoja.\n");
                 sb.append("Ei käyttäjätietoja.\n");
             } else {
                 JSONArray user_data = log.getJSONArray("user_info");
@@ -66,13 +66,14 @@ public class JSONReader {
             }
 
             if (log.isNull("log_data")){
-                System.out.println("Ei yhtään lokipäivitystä.\n");
+                //System.out.println("Ei yhtään lokipäivitystä.\n");
                 sb.append("Ei lokipäivityksiä.\n");
             } else {
                 JSONArray data = log.getJSONArray("log_data");
 
                 int x = 0;
                 String log_line = null;
+                //using same variables for both food and weather inputs
                 String food_info = null;
                 int food_number = 0;
                 while ((log_line= String.valueOf((data.getJSONObject(x)))) != null) {
@@ -80,11 +81,11 @@ public class JSONReader {
                     JSONObject obj = new JSONObject(log_line);
                     food_info = obj.getString("food_item");
                     food_number = obj.getInt("food_amount");
-                    System.out.println(food_info + "--" + food_number + "\n");
+                    //System.out.println(food_info + " ; " + food_number + "\n");
                     sb.append(x+1);
                     sb.append(". syöte: ");
                     sb.append(food_info);
-                    sb.append("--");
+                    sb.append(" ; ");
                     sb.append(food_number);
                     sb.append("\n");
                     x += 1;

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.JSONWriter;
 import com.example.myapplication.ui.PasswordTester;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -44,6 +45,8 @@ public class WeatherFragment extends Fragment {
             public void onClick(View v) {
                 //Utilising the passwordtester again with city names: reusing excisting code.
                 PasswordTester passwordTester = new PasswordTester();
+                counter++;
+                JSONWriter.updateJSON(counter, editText_weatherInput.getText().toString());
                 //Check if users input is 
                 if (passwordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
@@ -53,8 +56,6 @@ public class WeatherFragment extends Fragment {
                     String url = "https://goweather.herokuapp.com/weather/";
                     StringBuilder builder = new StringBuilder(url);
                     CharSequence chSeq = editText_weatherInput.getText().toString();
-                    counter++;
-                    //tähän json call
                     builder.append(chSeq);
                     //System.out.println(builder);
                     new AsyncHttpClient().get(builder.toString(), new AsyncHttpResponseHandler() {
