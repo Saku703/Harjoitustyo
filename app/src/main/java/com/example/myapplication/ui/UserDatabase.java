@@ -111,7 +111,7 @@ public class UserDatabase extends Activity{
             } else {
                 returnStatement = "Sähköposti tai salasana on väärä.";
             }
-        } catch (JSONException e) {
+        } catch (JSONException e) {   
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
