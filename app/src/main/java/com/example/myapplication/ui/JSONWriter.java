@@ -12,11 +12,16 @@ import java.io.OutputStreamWriter;
 
 public class JSONWriter {
 
-    public static Context context = null;
+    //public static Context context = null;
+    private static Context context = null;
 
     private static JSONObject log = new JSONObject();
     private static JSONArray basic_list = new JSONArray();
     private static JSONArray ingredient_list = new JSONArray();
+
+    public JSONWriter(Context context){
+        this.context = context;
+    }
 
     public static void basicInfoJSON(String user_user, String user_password, String user_name, int user_age, int user_height, int user_weight, String user_sex){
         JSONObject basic_info_variable = new JSONObject();
@@ -32,6 +37,7 @@ public class JSONWriter {
             basic_list.put(basic_info_variable);
             log.put("user_info", basic_list);
             //writing to file
+            context = getContext.getContextForFile(context);
             OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput("jsonFile", Context.MODE_PRIVATE));
             osw.write(log.toString());
             osw.close();
@@ -49,6 +55,8 @@ public class JSONWriter {
             ingredient_list.put(ingredient);
             log.put("log_data", ingredient_list);
             System.out.println(log.toString());
+            //write to file
+            context = getContext.getContextForFile(context);
             OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput("jsonFile", Context.MODE_PRIVATE));
             osw.write(log.toString());
             osw.close();
@@ -56,4 +64,5 @@ public class JSONWriter {
             e.printStackTrace();
         }
     }
+
 }

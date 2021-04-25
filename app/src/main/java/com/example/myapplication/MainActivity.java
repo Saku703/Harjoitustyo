@@ -10,6 +10,7 @@ import com.example.myapplication.ui.OpeningFragment;
 import com.example.myapplication.ui.ProteinCalculator;
 import com.example.myapplication.ui.addFood.AddFoodFragment;
 import com.example.myapplication.ui.addFood.AverageCO2;
+import com.example.myapplication.ui.getContext;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         ProteinCalculator.populateArray();
 
         context = MainActivity.this;
+        context = getContext.getContextForFile(context);
 
         /*
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

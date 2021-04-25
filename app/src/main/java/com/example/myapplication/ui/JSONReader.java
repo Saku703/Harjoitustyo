@@ -17,14 +17,11 @@ import java.io.InputStreamReader;
 //import static com.example.myapplication.ui.JSONWriter.log;
 
 public class JSONReader {
-<<<<<<< HEAD
     static TextView logtext;
-=======
 
     static Context context = null;
 
     //static TextView logtext;
->>>>>>> Santeri7
 
     public static String readJSON(View v){
         String json = getJSON();  //gets JSON information
@@ -37,6 +34,7 @@ public class JSONReader {
         StringBuilder sb = new StringBuilder();  //creates StringBuilder sb that can be expanded
 
         InputStream ins = null;
+        context = getContext.getContextForFile(context);
         try {
             ins = context.openFileInput("jsonFile");
         } catch (FileNotFoundException e) {
