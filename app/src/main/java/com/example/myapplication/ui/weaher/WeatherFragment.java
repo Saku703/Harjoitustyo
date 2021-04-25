@@ -44,12 +44,9 @@ public class WeatherFragment extends Fragment {
                 //Utilising the passwordtester again with city names: reusing excisting code.
                 PasswordTester passwordTester = new PasswordTester();
 
-<<<<<<< HEAD
                 if (passwordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
-=======
                 //Check if users input is 
-                if (PasswordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
->>>>>>> Saku6
+                if (passwordTester.containsNumber(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
                 } else if (passwordTester.containsSpecialCharacter(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
@@ -74,12 +71,8 @@ public class WeatherFragment extends Fragment {
 
                         @Override
                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-<<<<<<< HEAD
                             textView_weatherData.setText("Säätietoja ei ole juuri nyt saatavilla paikkaan " +
                                     editText_weatherInput.getText().toString() + ". Yritä myöhemmin uudestaan");
-=======
-                            textView_weatherData.setText("Säätietoja ei ole juuri nyt saatavilla hakemaasi paikkaan.");
->>>>>>> Saku6
                         }
                     });
                 }
