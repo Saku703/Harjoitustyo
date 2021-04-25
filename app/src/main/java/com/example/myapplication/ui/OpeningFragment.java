@@ -1,7 +1,6 @@
 package com.example.myapplication.ui;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.weaher.WeatherViewModel;
-import com.google.android.material.navigation.NavigationView;
 
 public class OpeningFragment extends Fragment {
 
@@ -50,10 +48,7 @@ public class OpeningFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        /*openingViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class); */
         View root = inflater.inflate(R.layout.fragment_opening, container, false);
-        //final TextView textView = root.findViewById(R.id.text_opening);
 
         welcome = (TextView) root.findViewById(R.id.text_opening);
         user = (EditText) root.findViewById(R.id.userLogin_opening);
@@ -144,14 +139,6 @@ public class OpeningFragment extends Fragment {
                 }
             }
         });
-
-        /*
-        openingViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        }); */
         return root;
     }
 }

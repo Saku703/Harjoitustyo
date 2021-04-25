@@ -63,15 +63,7 @@ public class UserDatabase extends Activity{
         } else if (name.length() < 3) {
             returnStatement = "Nimen tulee olla väh. 3 merkkiä.";
         } else {
-            User temp = new User(newUser, newPassword, name, age, height, weight, selectedSex);
             JSONWriter.basicInfoJSON(newUser, newPassword, name, age, height, weight, selectedSex);
-            int usersCount = usersCount() - 1;
-            array[usersCount] = (temp);
-            System.out.println(array[usersCount].getUser());
-            System.out.println(array[usersCount].getPassword());
-            System.out.println(array[usersCount].getAge());
-            System.out.println(array[usersCount].getSex());
-            System.out.println("käyttäjiä" + usersCount);
             returnStatement = "Tili luotu. Kirjaudu sisään.";
         }
         return returnStatement;
@@ -102,12 +94,20 @@ public class UserDatabase extends Activity{
             if (log.isNull("user_info")) {
                 returnStatement = "Yhtään tiliä ei ole vielä luotu. Luo tili.";
             } else if ((user.equals(userFromLog) == true) && (password.equals(passwordFromLog))) {
-                returnStatement = "Olet kirjautunut sisään!";
                 String nameFromLog = first_line.getString("user_name");
+
+                //Parsing the user info from log to add to the user array.
+                //User array is static and used for specific app run to perform calculations.
                 int ageFromLog = first_line.getInt("user_age");
                 int heightFromLog = first_line.getInt("user_height");
                 int weightFromLog = first_line.getInt("user_weight");
                 String sexFromLog = first_line.getString("user_sex");
+
+                User temp = new User(userFromLog, passwordFromLog, nameFromLog, ageFromLog,
+                        heightFromLog, weightFromLog, sexFromLog);
+                int usersCount = usersCount() - 1;
+                array[usersCount] = (temp);
+                returnStatement = "Olet kirjautunut sisään!";
             } else {
                 returnStatement = "Sähköposti tai salasana on väärä.";
             }

@@ -178,6 +178,7 @@ public class AddFoodFragment extends Fragment {
             double activityFactor = 0.2;
             String protein_goal = UserDatabase.userDailyProteinGoal(activityFactor);
             String userName = UserDatabase.getUserName();
+
             infoForUserX.setText("Juuri sinulle " + userName);
             textView_proteinGoal.setText(protein_goal + " g");
 
