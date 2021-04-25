@@ -97,12 +97,12 @@ public class JSONWriter {
         }
     }
 
-    public static void updateJSON(int amount_of_food, String food_type){
+    public static void updateJSON(int number, String str){
         JSONObject ingredient = new JSONObject();
         //adds the name of the food and amount eaten to JSONArray every time user inputs them
         try {
-            ingredient.put("food_item", food_type);
-            ingredient.put("food_amount", amount_of_food);
+            ingredient.put("food_item", str);
+            ingredient.put("food_amount", number);
             ingredient_list.put(ingredient);
             log.put("log_data", ingredient_list);
             //write to file

@@ -61,6 +61,7 @@ public class JSONReader {
 
                 int x = 0;
                 String log_line = null;
+                //using same variables for both food and weather inputs
                 String food_info = null;
                 int food_number = 0;
                 while ((log_line= String.valueOf((data.getJSONObject(x)))) != null) {
@@ -70,7 +71,7 @@ public class JSONReader {
                     sb.append(x+1);
                     sb.append(". syöte: ");
                     sb.append(food_info);
-                    sb.append("--");
+                    sb.append(" ; ");
                     sb.append(food_number);
                     sb.append("\n");
                     x += 1;
