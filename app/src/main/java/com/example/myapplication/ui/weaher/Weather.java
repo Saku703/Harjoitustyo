@@ -11,6 +11,7 @@ public class Weather {
     public Weather() {
         full_weather_report = "";
     }
+
     public static String getWeather(String str) {
         if(str != null) {
             StringBuilder sb = new StringBuilder();
@@ -21,11 +22,13 @@ public class Weather {
                 if(day0_temp.equals("") == true){
                     full_weather_report = "";
                 } else {
+                    //Parsing the results of today
                     String day0_wind = fwi.getString("wind");
                     String day0_descript = fwi.getString("description");
                     sb.append("Tänään: ").append(day0_temp).append(", ").append(day0_wind).append(".\nPäivän kuvaus: ");
                     sb.append(day0_descript).append(".\n");
 
+                    //Parsing the results of future days
                     JSONArray forecast_data = fwi.getJSONArray("forecast");
                     int x = 0;
                     String forecast_day = null;

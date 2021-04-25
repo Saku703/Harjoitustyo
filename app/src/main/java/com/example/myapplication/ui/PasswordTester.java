@@ -7,6 +7,7 @@ public class PasswordTester {
     String regex;
     char ch;
 
+    //Password tester is used to check if the password meets the criteria
     public PasswordTester() {
         result = false;
         regex = "";
@@ -14,7 +15,6 @@ public class PasswordTester {
     }
 
     public boolean containsNumber (String password) {
-        result = false;
         regex = ".*\\d.*";
         Pattern pattern = Pattern.compile(regex);
         result = pattern.matcher(password).matches();
@@ -22,8 +22,6 @@ public class PasswordTester {
     }
 
     public boolean containsCapitalLetter (String password, int passLenght) {
-        result = false;
-
         for (int i=0; i < passLenght; i++) {
             ch = password.charAt(i);
             if (Character.isUpperCase(ch)) {
@@ -34,8 +32,6 @@ public class PasswordTester {
     }
 
     public boolean containsSmallLetter (String password, int passLenght) {
-        result = false;
-
         for (int i=0; i < passLenght; i++) {
             ch = password.charAt(i);
             if (Character.isLowerCase(ch)) {
@@ -46,7 +42,6 @@ public class PasswordTester {
     }
 
     public boolean containsSpecialCharacter (String password) {
-        result = false;
         //The special characters required are selected based on usually accepted special characters
         regex = ".*(?=.[-_!@#$%^&*+,:;<=>?\\\\]).*";
         Pattern pattern = Pattern.compile(regex);

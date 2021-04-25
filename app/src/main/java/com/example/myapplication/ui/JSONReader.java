@@ -41,6 +41,7 @@ public class JSONReader {
             if (log.isNull("user_info")){
                 sb.append("Ei käyttäjätietoja.\n");
             } else {
+                //Parsing user data and adding it to sb
                 JSONArray user_data = log.getJSONArray("user_info");
                 String log_line_one = String.valueOf((user_data.getJSONObject(0)));
                 JSONObject first_line = new JSONObject(log_line_one);
@@ -61,7 +62,7 @@ public class JSONReader {
 
                 int x = 0;
                 String log_line = null;
-                //using same variables for both food and weather inputs
+                //Using same variables for both food and weather inputs
                 String food_info = null;
                 int food_number = 0;
                 while ((log_line= String.valueOf((data.getJSONObject(x)))) != null) {

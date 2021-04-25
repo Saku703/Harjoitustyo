@@ -13,11 +13,8 @@ import java.io.OutputStreamWriter;
 
 public class JSONWriter {
 
-    //public static Context context = null;
     private static Context context = null;
     public static JSONObject log = new JSONObject();
-
-    //private static JSONObject log = new JSONObject();
     private static JSONObject beginning_log = new JSONObject();
     private static JSONArray basic_list = new JSONArray();
     private static JSONArray beginning_basic_list = new JSONArray();
@@ -35,8 +32,9 @@ public class JSONWriter {
                 beginning_log = new JSONObject(fld);
 
                 if (beginning_log.isNull("user_info")){
-                    System.out.println("Ei valmiita käyttäjätietoja.\n");
+                    //No existing user information
                 } else {
+                    //If user information exists, it is added to log JSON object
                     JSONArray user_data = beginning_log.getJSONArray("user_info");
                     String log_line_one = String.valueOf((user_data.getJSONObject(0)));
                     JSONObject first_line = new JSONObject(log_line_one);
@@ -45,8 +43,9 @@ public class JSONWriter {
                             first_line.getInt("user_weight"), first_line.getString("user_sex"));
                 }
                 if (beginning_log.isNull("log_data")){
-                    System.out.println("Ei aiempia lokipäivityksiä.\n");
+                    //No earlier log data
                 } else {
+                    //If earlier log data exists, it is added to log JSON object
                     JSONArray data = beginning_log.getJSONArray("log_data");
                     int x = 0;
                     String log_line = null;
@@ -76,7 +75,7 @@ public class JSONWriter {
 
     public static void basicInfoJSON(String user_user, String user_password, String user_name, int user_age, int user_height, int user_weight, String user_sex){
         JSONObject basic_info_variable = new JSONObject();
-        //populating JSONObject with basic user information
+        //Populating JSONObject with basic user information
         try {
             basic_info_variable.put("user_user", user_user);
             basic_info_variable.put("user_password", user_password);
@@ -87,7 +86,7 @@ public class JSONWriter {
             basic_info_variable.put("user_sex", user_sex);
             basic_list.put(basic_info_variable);
             log.put("user_info", basic_list);
-            //writing to file
+            //Writing to file
             context = getContext.getContextForFile(context);
             OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput("jsonFile", Context.MODE_PRIVATE));
             osw.write(log.toString());
@@ -99,13 +98,13 @@ public class JSONWriter {
 
     public static void updateJSON(int number, String str){
         JSONObject ingredient = new JSONObject();
-        //adds the name of the food and amount eaten to JSONArray every time user inputs them
+        //Adds the name of the food and amount eaten to JSONArray every time user inputs them
         try {
             ingredient.put("food_item", str);
             ingredient.put("food_amount", number);
             ingredient_list.put(ingredient);
             log.put("log_data", ingredient_list);
-            //write to file
+            //Write to file
             context = getContext.getContextForFile(context);
             OutputStreamWriter osw = new OutputStreamWriter(context.openFileOutput("jsonFile", Context.MODE_PRIVATE));
             osw.write(log.toString());

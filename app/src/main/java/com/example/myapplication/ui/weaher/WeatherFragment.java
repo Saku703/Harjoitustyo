@@ -49,10 +49,12 @@ public class WeatherFragment extends Fragment {
                 } else if (passwordTester.containsSpecialCharacter(editText_weatherInput.getText().toString()) == true) {
                     textView_cityHeader.setText("Kaupunkia " + editText_weatherInput.getText().toString() + " ei löytynyt");
                 } else {
+                    //Weather API asyncronic http-call
                     String url = "https://goweather.herokuapp.com/weather/";
                     StringBuilder builder = new StringBuilder(url);
                     CharSequence chSeq = editText_weatherInput.getText().toString();
                     builder.append(chSeq);
+
                     new AsyncHttpClient().get(builder.toString(), new AsyncHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

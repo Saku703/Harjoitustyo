@@ -2,22 +2,11 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
-import android.widget.Button;
-
 import com.example.myapplication.ui.JSONWriter;
-import com.example.myapplication.ui.OpeningFragment;
 import com.example.myapplication.ui.ProteinCalculator;
-import com.example.myapplication.ui.UserDatabase;
-import com.example.myapplication.ui.addFood.AddFoodFragment;
-import com.example.myapplication.ui.addFood.AverageCO2;
 import com.example.myapplication.ui.getContext;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
-
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -25,12 +14,6 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 

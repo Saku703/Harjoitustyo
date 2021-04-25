@@ -2,25 +2,20 @@ package com.example.myapplication.ui;
 
 import android.app.Activity;
 import android.content.Context;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
-
 import static java.lang.Math.round;
 
 public class UserDatabase extends Activity{
 
     static Context context = null;
-
     private String user;
     private String password;
     private String newUser;
@@ -33,7 +28,7 @@ public class UserDatabase extends Activity{
         newPassword = "";
     }
 
-    //initialising the static user array
+    //Initialising the static user array
     public static User[] array;
     static {
         array = new User[6];
@@ -44,7 +39,7 @@ public class UserDatabase extends Activity{
         int passMinLenght = 12; //minimum lenght given in the final project instructions
         int passLenght = newPassword.length();
 
-        /*testing all of the requirements for a good password are met. they are:
+        /*Testing all of the requirements for a good password are met. they are:
         Minimum of 12 characters.
         Must contain at least 1 number, 1 capital letter, 1 lower case letter and 1 special character.
         Also testing that the username and name are of a reasonable lenght.*/
@@ -84,6 +79,7 @@ public class UserDatabase extends Activity{
         BufferedReader br = new BufferedReader(new InputStreamReader(ins));
 
         try {
+            //Getting the needed data from log
             String fld = br.readLine();  //fld = full log data
             JSONObject log = new JSONObject(fld);
             JSONArray user_data = log.getJSONArray("user_info");
@@ -109,8 +105,6 @@ public class UserDatabase extends Activity{
                 int usersCount = usersCount() - 1;
                 array[usersCount] = (temp);
                 returnStatement = "Olet kirjautunut sisään!";
-                //LogOutFragment.setLogOutInfo(userFromLog);
-                System.out.println("moi");
             } else {
                 returnStatement = "Sähköposti tai salasana on väärä.";
             }

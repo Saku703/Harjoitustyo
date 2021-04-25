@@ -4,7 +4,7 @@ import static java.lang.Math.round;
 
 public class ProteinCalculator {
 
-    //initialising the static protein array
+    //Initialising the static protein array
     public static Protein[] array;
     static {
         array = new Protein[10];
@@ -32,11 +32,8 @@ public class ProteinCalculator {
 
     public static String countConsumedProtein (int consumedAmount, int index) {
         double protein = 0.0;
-        System.out.println("indeksi" + index);
 
         protein = array[index].getProtein() * consumedAmount;
-        System.out.println(protein);
-
         protein = round(protein);
         String strConsumed = Double.toString(protein);
 
